@@ -1,0 +1,149 @@
+@import url("https://use.typekit.net/fvy0kqw.css");
+
+* {
+  font-family: "stevie-sans", sans-serif;
+  --blue: #1077C3;
+  --light-blue: #F3F8FF;
+}
+
+html {
+  background: rgb(36, 41, 45);
+  background: linear-gradient(117deg, rgba(36, 41, 45, 1) 0%, rgba(8, 14, 22, 1) 100%);
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+main {
+  width: 80vw;
+  height: 100vh;
+}
+
+
+aside {
+  min-width: 20vw;
+  height: auto;
+  background: #FFFFFF;
+  box-shadow: 0 8px 32px 0 rgba(15, 15, 15, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid var(--light-blue);
+}
+
+table {
+  padding: 50px;
+  width: 100%;
+
+}
+
+.head {
+  color: #5A6377;
+  background-color: #EDEFF3;
+  padding: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-img {
+  background-color: #EDEFF3;
+  width: 50px;
+  height: 50px;
+  background-image: url("../assets/ronaldo.png");
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+tr {
+  padding: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+td {
+  font-size: 13px;
+}
+
+.name-player {
+  padding-bottom: 10px;
+
+  border-bottom: 2px solid #EDEFF3;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.active {
+  box-shadow: 5px 0px 0px 0px var(--blue);
+}
+
+.active,
+.active a {
+  background-color: #F3F8FF;
+  color: var(--blue);
+}
+
+.item:hover {
+  background-color: #F3F8FF;
+  color: var(--blue);
+  /* outline: 5px solid var(--blue); */
+  box-shadow: 5px 0px 0px 0px var(--blue);
+}
+
+
+.item {
+  padding: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.item a {
+  display: flex;
+  align-items: center;
+}
+
+i {
+  margin-right: 10px;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  padding: 20px;
+}
+
+.logo img {
+  width: 100px;
+}
+
+@media screen and (max-width: 1060px) {
+  .item p {
+    display: none;
+  }
+
+  .item a {
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+}
