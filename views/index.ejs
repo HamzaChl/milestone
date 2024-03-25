@@ -13,26 +13,451 @@
   <body>
     <%- include("partials/aside") %>
     <main>
-      <section class="table">
-        <table>
-          <tr class="head">
-            <td>PLAYER</td>
-            <td>LEAGUE</td>
-            <td>CLUB</td>
-            <td>MARKET VALUE</td>
-            <td>COUNTRY</td>
-            <td>BIRTHDATE</td>
+      <%- include("partials/search") %>
+      <section class="players-container">
+        <table class="players">
+          <tr class="table-heading">
+            <th scope="col">player</th>
+            <th scope="col">league</th>
+            <th scope="col">club</th>
+            <th scope="col"><i class="fa-solid fa-coins"></i>market value</th>
+            <th scope="col">
+              <i class="fa-solid fa-earth-americas"></i>country
+            </th>
+            <th scope="col">active</th>
+            <th scope="col">action</th>
           </tr>
           <tr>
-            <td class="name-player">
-              <img class="player-img" src="/assets/ronaldo.png" alt="" />
-              CRISTIANO RONALDO
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
             </td>
-            <td class="league-player">saudi premier league</td>
-            <td class="league-player">saudi premier league</td>
-            <td class="league-player">saudi premier league</td>
-            <td class="league-player">saudi premier league</td>
-            <td class="league-player">saudi premier league</td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
+          </tr>
+          <tr>
+            <td id="playerName">
+              <div class="playerimg"></div>
+              Cristiano Ronaldo
+            </td>
+            <td>Saudi Premier League</td>
+            <td>Al-Nassr</td>
+            <td>15.000.000€</td>
+            <td>Portugal</td>
+            <td id="active"><div class="icon"></div></td>
+            <td><a href="">view</a></td>
           </tr>
         </table>
       </section>

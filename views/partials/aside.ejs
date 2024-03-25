@@ -1,31 +1,34 @@
 <aside class="aside-nav">
-  <section class="logo">
-    <img src="/assets/images/logo-m2.png" alt="" />
-  </section>
   <section>
-    <article class="item active">
-      <a href="">
-        <i class="fa-solid fa-house"></i>
-        <p>home</p></a
-      >
+    <article class="top">
+      <img src="/assets/images/logo2.png" class="logo" alt="" />
     </article>
-    <article class="item">
-      <a href="">
-        <i class="fa-solid fa-database"></i>
-        <p>data overview</p></a
-      >
+    <article class="">
+      <figure class="top-logo"><h1></h1></figure>
     </article>
-    <article class="item">
-      <a href="">
+    <article class="item <%= currentPage === 'players' ? 'active' : '' %>" id="players">
+      <a href="/players">
+        <i class="fa-solid fa-users"></i>
+        <p>players</p>
+      </a>
+    </article>
+    <article class="item <%= currentPage === 'leagues' ? 'active' : '' %>" id="leagues">
+      <a href="/leagues">
+        <i class="fa-solid fa-trophy"></i>
+        <p>leagues</p>
+      </a>
+    </article>
+    <article class="item <%= currentPage === 'settings' ? 'active' : '' %>">
+      <a href="/settings">
         <i class="fa-solid fa-gears"></i>
-        <p>settings</p></a
-      >
+        <p>settings</p>
+      </a>
     </article>
-    <article class="item">
-      <a href="">
+    <article class="item <%= currentPage === 'logout' ? 'active' : '' %>">
+      <a href="/logout">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <p>logout</p></a
-      >
+        <p>logout</p>
+      </a>
     </article>
   </section>
 </aside>
