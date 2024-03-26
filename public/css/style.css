@@ -2,11 +2,12 @@
 
 * {
   font-family: "stevie-sans", sans-serif;
-  --fluo: #D6FF00;
+  --fluo: #00F652;
   --light-blue: #F3F8FF;
-  --aside-back: #292929;
-  --body-back: #181818;
-  --ligh-black: #3e3e3e;
+  --aside-back: #060e27;
+  --body-back: #030817;
+  --ligh-black: #284593;
+  --button: #193668;
   box-sizing: border-box;
 }
 
@@ -24,6 +25,8 @@ body {
   width: 100vw;
   display: flex;
   background: var(--body-back);
+  /* background-image: url(../assets/images/wallpaper.jpg); */
+  background-size: cover;
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
@@ -47,6 +50,11 @@ aside {
   top: 0;
   position: fixed;
   grid-area: aside;
+
+}
+
+footer {
+  height: 100px;
 }
 
 a {
@@ -55,7 +63,7 @@ a {
 }
 
 .active {
-  background-color: #1818188c;
+  background-color: #0b1638;
   box-shadow: 7px 0px 0px 0px var(--fluo);
 }
 
@@ -65,7 +73,7 @@ a {
 }
 
 .item:hover {
-  background-color: #1818188c;
+  background-color: #0b1638;
   color: var(--fluo);
   box-shadow: 7px 0px 0px 0px var(--fluo);
 }
@@ -75,7 +83,33 @@ a:hover {
   color: var(--fluo);
 }
 
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
 
+.home-item {
+  background-color: var(--aside-back);
+  padding: 20px;
+  height: 200px;
+  width: 30%;
+  border: 1px solid var(--ligh-black);
+  border-radius: 10px;
+  text-align: center;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+}
+
+.home-item:hover {
+  border: 3px solid var(--ligh-black);
+}
+
+
+h1 {
+  color: white;
+}
 
 .item {
   color: white;
@@ -131,22 +165,25 @@ table {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-image: url(/assets/ronaldo.png);
+  /* background-image: url(/assets/ronaldo.png); */
+  background-color: #F3F8FF;
   background-size: contain;
+  background-position: center;
 }
 
 td {
   border-bottom: 1px solid #5b5b5b;
-  /* background-color: var(--aside-back); */
   color: white;
   padding: 5px;
   padding-left: 10px;
+  font-size: 14px;
 }
 
 #playerName {
   display: flex;
   align-items: center;
   gap: 10px;
+  height: 50px;
 }
 
 .players {
@@ -154,12 +191,24 @@ td {
 }
 
 .players th {
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   background-color: var(--fluo);
   color: var(--aside-back);
   margin: 0;
   border: none;
   outline: none;
   font-weight: 700;
+}
+
+tr:hover {
+  background-color: #5b5b5b3e;
+}
+
+tr {
+  height: 40px;
+
+  /* Définissez la hauteur souhaitée */
+
 }
 
 th {
@@ -172,13 +221,24 @@ th {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   margin-top: 2 0px;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
 }
 
 .icon {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: green;
+  text-align: center;
+}
+
+.player-active .icon {
+  background-color: rgb(69, 221, 69);
+  text-align: center;
+}
+
+.player-inactive .icon {
+  background-color: rgb(214, 69, 69);
   text-align: center;
 }
 
@@ -192,10 +252,12 @@ button {
   padding-left: 35px;
   padding-right: 35px;
   border-radius: 10px;
-  background-color: var(--aside-back);
+  background-color: var(--button);
   border: 2px solid var(--ligh-black);
   color: white;
   cursor: pointer;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
 }
 
 select {
@@ -204,10 +266,12 @@ select {
   padding-left: 35px;
   padding-right: 35px;
   border-radius: 10px;
-  background-color: var(--aside-back);
+  background-color: var(--button);
   border: 2px solid var(--ligh-black);
   color: white;
   cursor: pointer;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
 }
 
 button:hover {
@@ -218,6 +282,8 @@ button:hover {
   display: inline-block;
   position: relative;
   align-items: center;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
 }
 
 input[type="text"] {
@@ -283,5 +349,40 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
   }
+}
 
+
+
+/*
+Animations:
+*/
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

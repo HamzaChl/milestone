@@ -1,10 +1,15 @@
 <aside class="aside-nav">
   <section>
     <article class="top">
-      <img src="/assets/images/logo2.png" class="logo" alt="" />
     </article>
     <article class="">
       <figure class="top-logo"><h1></h1></figure>
+    </article>
+    <article class="item <%= currentPage === 'home' ? 'active' : '' %>" id="players">
+      <a href="/">
+        <i class="fa-solid fa-house"></i>
+        <p>home</p>
+      </a>
     </article>
     <article class="item <%= currentPage === 'players' ? 'active' : '' %>" id="players">
       <a href="/players">
