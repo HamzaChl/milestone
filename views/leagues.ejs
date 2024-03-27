@@ -14,7 +14,33 @@
     <%- include("partials/aside") %>
     <main>
       <%- include("partials/search") %>
-      
+      <table class="players">
+        <tr class="table-heading">
+          <th scope="col"><i class="fa-solid fa-trophy"></i> League</th>
+          <th scope="col">
+            <i class="fa-solid fa-coins"></i> Total Market Value
+          </th>
+          <th scope="col">
+            <i class="fa-solid fa-earth-americas"></i> Country
+          </th>
+          <th scope="col"><i class="fa-solid fa-notes-medical"></i> Active</th>
+          <th scope="col"><i class="fa-solid fa-calendar-days"></i></i> Last Updated</th>
+          <th scope="col"><i class="fa-regular fa-futbol"></i> Action</th>
+        </tr>
+        <% for (let i = 0; i < leagues.length; i++) { %>
+          <tr>
+              <td><%= leagues[i].League %></td>
+              <td><%= leagues[i]['Total Market Value'] %></td>
+              <td><%= leagues[i].Country %></td>
+              <td id="active" class="<%= leagues[i].Active === 'active' ? 'player-active' : 'player-inactive' %>">
+                <div class="icon <%= leagues[i].Active === 'active' ? 'player-active' : 'player-inactive' %>"></div>
+            </td>
+              <td><%= leagues[i]['Last Updated'] %></td>
+              <td><a href="">view</a></td>
+
+          </tr>
+      <% } %>
+  </table>
     </main>
   </body>
 </html>

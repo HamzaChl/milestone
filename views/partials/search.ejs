@@ -1,11 +1,10 @@
-<form action="" method="get"> 
-
+<form action="/players" method="post">
   <section class="search">
     <div class="input-wrapper">
-      <input type="text" placeholder="search" name="searchTerm" /> 
+      <input type="text" placeholder="search" name="searchTerm" />
     </div>
     <div>
-      <select name="searchCategory" id="cars"> 
+      <select name="searchCategory" id="cars">
         <option value="player-name" name="player-name">player name</option>
         <option value="league">league</option>
         <option value="club">club</option>
@@ -14,14 +13,17 @@
       </select>
     </div>
     <div class="sorting">
-      <button type="submit" name="sortOrder" value="ASC">ASC <i class="fa-solid fa-arrow-up-a-z"></i></button> 
+      <button type="submit" name="sortOrder" value="ASC">
+        <i class="fa-solid fa-arrow-up-a-z"></i>
+      </button>
     </div>
     <div class="sorting">
-      <button type="submit" name="sortOrder" value="DESC">DESC <i class="fa-solid fa-arrow-up-z-a"></i></button>
+      <button type="submit" name="sortOrder" value="DESC">
+        <i class="fa-solid fa-arrow-up-z-a"></i>
+      </button>
     </div>
     <div class="submit">
       <button type="submit">SEARCH</button>
     </div>
   </section>
-  
 </form>

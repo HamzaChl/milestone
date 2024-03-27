@@ -84,26 +84,56 @@ a:hover {
 }
 
 .home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 30px;
+  grid-template-areas:
+    "home-header home-header home-header"
+    "item1 item2 item3"
+    "img img .";
+  align-items: stretch;
 }
 
 .home-item {
   background-color: var(--aside-back);
   padding: 20px;
-  height: 200px;
-  width: 30%;
+  height: 150px;
+  /* width: 30%; */
   border: 1px solid var(--ligh-black);
   border-radius: 10px;
   text-align: center;
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
 
+.item1 {
+  grid-area: item1;
+}
+
+.item2 {
+  grid-area: item2;
+}
+
+.item3 {
+  grid-area: item3;
+}
+
+.img-home-dash {
+  background-color: red;
+  grid-area: img;
+  height: 350px;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 .home-item:hover {
-  border: 3px solid var(--ligh-black);
+  border: 1px solid var(--fluo);
+  background-color: #0b1638;
+}
+
+.top-home {
+  width: 100%;
+  background-color: red;
+  grid-area: home-header;
 }
 
 
