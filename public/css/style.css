@@ -2,12 +2,21 @@
 
 * {
   font-family: "stevie-sans", sans-serif;
+  /* 
+  TEST
   --fluo: #00F652;
   --light-blue: #F3F8FF;
   --aside-back: #060e27;
   --body-back: #030817;
   --ligh-black: #284593;
-  --button: #193668;
+  --button: #193668; */
+  --fluo: #00F652;
+  --light-blue: #F3F8FF;
+  --aside-back: #0f0f0f;
+  --body-back: #111111;
+  --ligh-black: #2b894b;
+  --hover: #1e1e1e;
+  --button: #303030;
   box-sizing: border-box;
 }
 
@@ -50,7 +59,6 @@ aside {
   top: 0;
   position: fixed;
   grid-area: aside;
-
 }
 
 footer {
@@ -63,7 +71,7 @@ a {
 }
 
 .active {
-  background-color: #0b1638;
+  background-color: var(--hover);
   box-shadow: 7px 0px 0px 0px var(--fluo);
 }
 
@@ -73,7 +81,7 @@ a {
 }
 
 .item:hover {
-  background-color: #0b1638;
+  background-color: var(--hover);
   color: var(--fluo);
   box-shadow: 7px 0px 0px 0px var(--fluo);
 }
@@ -127,7 +135,7 @@ a:hover {
 
 .home-item:hover {
   border: 1px solid var(--fluo);
-  background-color: #0b1638;
+  background-color: var(--hover);
 }
 
 .top-home {
@@ -159,6 +167,10 @@ h1 {
   padding-bottom: 10px;
 }
 
+.top-logo img {
+  width: 80%;
+}
+
 i {
   margin-right: 10px;
 }
@@ -175,10 +187,28 @@ i {
   width: 100px;
 }
 
+.detail-img {
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+  background-color: #F3F8FF;
+  border-radius: 10px;
+}
+
+.details-main {
+  margin-top: 100px;
+  display: flex;
+  gap: 40px;
+}
+
 .top {
   height: 2rem;
   width: 100%;
   margin-bottom: 40px;
+}
+
+.details-player {
+  color: white;
 }
 
 table {

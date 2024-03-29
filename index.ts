@@ -25,6 +25,17 @@ function sortPlayers(players: any[], sortBy: string, order: string) {
 }
 
 app.get("/", (req, res) => {
+  res.render("login");
+});
+
+app.post("/", (req, res) => {
+  // Vérifier les informations de connexion ici
+
+  // Rediriger vers la page d'accueil après la connexion réussie
+  res.redirect("/home");
+});
+
+app.get("/home", (req, res) => {
   res.render("index", {
     title: "Hello World",
     message: "Hello World",
@@ -66,6 +77,37 @@ app.post("/players", async (req, res) => {
   }
 });
 
+app.get("/players/:fullName", async (req, res) => {
+  try {
+    const { fullName } = req.params;
+    const response = await fetch(
+      "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
+    );
+    const data = await response.json();
+    const player = data.players.find(
+      (player: any) =>
+        player.name.toLowerCase().replace(/\s/g, "") === fullName.toLowerCase()
+    );
+
+    if (!player) {
+      return res.status(404).send("Joueur non trouvé");
+    }
+
+    const [firstName, lastName] = player.name.split(" "); // Sépare le prénom et le nom de famille
+    res.render("player", {
+      title: `${firstName} ${lastName}`,
+      message: `${firstName} ${lastName}`,
+      currentPage: "players",
+      player: player,
+    });
+  } catch (error) {
+    console.log("Erreur lors de la récupération des données :", error);
+    res
+      .status(500)
+      .send("Une erreur s'est produite lors du chargement du joueur.");
+  }
+});
+
 app.get("/leagues", async (req, res) => {
   try {
     const response = await fetch(
@@ -95,6 +137,14 @@ app.get("/settings", (req, res) => {
     message: "Hello World",
     currentPage: "settings",
   });
+});
+
+app.get("/logout", (req, res) => {
+  // Code pour gérer la déconnexion de l'utilisateur
+  // Par exemple, déconnexion de la session, suppression des cookies, etc.
+
+  // Redirection vers la page d'accueil après la déconnexion
+  res.redirect("/");
 });
 
 app.listen(app.get("port"), () => {

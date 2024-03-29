@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/ccd4003a42.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Players</title>
+  </head>
+  <body>
+    <%- include("./partials/aside") %>
+    <main>
+      <a href="/players"><i class="fa-solid fa-arrow-left-long"></i> Go back</a>
+      <h1><%= player.name %></h1>
+      <div
+        class="detail-img"
+        style="background-image: url('<%= player.imageURL %>')"
+      ></div>
+      <!-- <p class="details-player">
+        <i class="fa-regular fa-address-card"></i><strong>Name: </strong> <%=
+        player.name %>
+      </p> -->
+      <p class="details-player">
+        <i class="fa-solid fa-calendar-days"></i
+        ><strong>Birth Date: </strong> <%= player.birthdate %>
+      </p>
+      <p class="details-player">
+        <i class="fa-solid fa-cake-candles"></i><strong>Âge: </strong> <%=
+        player.age %>
+      </p>
+      <p class="details-player">
+        <i class="fa-solid fa-people-group"></i><strong>Club: </strong>
+        <td><%= player['club-infos'].club %></td>
+      </p>
+      <p class="details-player">
+        <i class="fa-solid fa-location-dot"></i> <strong>Position: </strong>
+        <td><%= player.position %></td>
+      </p>
+      <!-- Ajoutez d'autres informations sur le joueur ici -->
+    </main>
+  </body>
+</html>

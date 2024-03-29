@@ -1,23 +1,33 @@
 <aside class="aside-nav">
   <section>
-    <article class="top">
-    </article>
+    <!-- <article class="top"></article> -->
     <article class="">
-      <figure class="top-logo"><h1></h1></figure>
+      <figure class="top-logo">
+        <img src="/assets/images/logo-fc.webp" alt="" />
+      </figure>
     </article>
-    <article class="item <%= currentPage === 'home' ? 'active' : '' %>" id="players">
-      <a href="/">
+    <article
+      class="item <%= currentPage === 'home' ? 'active' : '' %>"
+      id="players"
+    >
+      <a href="/home">
         <i class="fa-solid fa-house"></i>
         <p>home</p>
       </a>
     </article>
-    <article class="item <%= currentPage === 'players' ? 'active' : '' %>" id="players">
+    <article
+      class="item <%= currentPage === 'players' ? 'active' : '' %>"
+      id="players"
+    >
       <a href="/players">
         <i class="fa-solid fa-users"></i>
         <p>players</p>
       </a>
     </article>
-    <article class="item <%= currentPage === 'leagues' ? 'active' : '' %>" id="leagues">
+    <article
+      class="item <%= currentPage === 'leagues' ? 'active' : '' %>"
+      id="leagues"
+    >
       <a href="/leagues">
         <i class="fa-solid fa-trophy"></i>
         <p>leagues</p>
