@@ -15,7 +15,6 @@ app.set("views", path.join(__dirname, "views"));
 
 app.set("port", process.env.PORT || 3000);
 
-// Fonction pour trier les joueurs
 function sortPlayers(players: any[], sortBy: string, order: string) {
   if (order === "ASC") {
     return players.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1));
@@ -24,18 +23,16 @@ function sortPlayers(players: any[], sortBy: string, order: string) {
   }
 }
 
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
+
+// app.post("/", (req, res) => {
+//   // Rediriger vers la page d'accueil après la connexion réussie
+//   res.redirect("/home");
+// });
+
 app.get("/", (req, res) => {
-  res.render("login");
-});
-
-app.post("/", (req, res) => {
-  // Vérifier les informations de connexion ici
-
-  // Rediriger vers la page d'accueil après la connexion réussie
-  res.redirect("/home");
-});
-
-app.get("/home", (req, res) => {
   res.render("index", {
     title: "Hello World",
     message: "Hello World",
@@ -140,10 +137,6 @@ app.get("/settings", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  // Code pour gérer la déconnexion de l'utilisateur
-  // Par exemple, déconnexion de la session, suppression des cookies, etc.
-
-  // Redirection vers la page d'accueil après la déconnexion
   res.redirect("/");
 });
 

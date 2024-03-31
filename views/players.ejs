@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo-fc.webp" />
     <script
       src="https://kit.fontawesome.com/ccd4003a42.js"
       crossorigin="anonymous"
@@ -20,10 +21,16 @@
             <th scope="col">
               <i class="fa-solid fa-person-walking"></i> Player
             </th>
-            <th scope="col"><i class="fa-solid fa-trophy"></i> League</th>
-            <th scope="col"><i class="fa-solid fa-people-group"></i> Club</th>
-            <th scope="col"><i class="fa-solid fa-coins"></i> Market Value</th>
-            <th scope="col">
+            <th class="mobile-td" scope="col">
+              <i class="fa-solid fa-trophy"></i> League
+            </th>
+            <th class="mobile-td" scope="col">
+              <i class="fa-solid fa-people-group"></i> Club
+            </th>
+            <th class="mobile-td" scope="col">
+              <i class="fa-solid fa-coins"></i> Market Value
+            </th>
+            <th class="mobile-td" scope="col">
               <i class="fa-solid fa-earth-americas"></i> Country
             </th>
             <th scope="col">
@@ -34,16 +41,18 @@
           <% for (let i = 0; i < players.length; i++) { %>
           <tr>
             <td id="playerName">
-              <div
-                class="playerimg"
-                style="background-image: url('<%= players[i].imageURL %>')"
-              ></div>
-              <%= players[i].name %>
+              <div class="content-name">
+                <div
+                  class="playerimg"
+                  style="background-image: url('<%= players[i].imageURL %>')"
+                ></div>
+                <%= players[i].name %>
+              </div>
             </td>
-            <td><%= players[i]['club-infos'].league %></td>
-            <td><%= players[i]['club-infos'].club %></td>
-            <td><%= players[i].marketValue %></td>
-            <td><%= players[i].nationality %></td>
+            <td class="mobile-td"><%= players[i]['club-infos'].league %></td>
+            <td class="mobile-td"><%= players[i]['club-infos'].club %></td>
+            <td class="mobile-td"><%= players[i].marketValue %></td>
+            <td class="mobile-td"><%= players[i].nationality %></td>
             <td
               id="active"
               class="<%= players[i].status === 'active' ? 'player-active' : 'player-inactive' %>"
