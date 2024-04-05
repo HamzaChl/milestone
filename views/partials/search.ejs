@@ -1,25 +1,34 @@
 <form action="/players" method="post">
   <section class="search">
     <div class="input-wrapper">
-      <input type="text" placeholder="search" name="searchTerm" />
+      <input
+        type="text"
+        placeholder="search"
+        id="searchTerm"
+        name="searchTerm"
+      />
     </div>
     <div class="main-sort">
       <div>
-        <select name="searchCategory" id="cars">
-          <option value="player-name" name="player-name">player name</option>
-          <option value="league">league</option>
-          <option value="club">club</option>
-          <option value="country">country</option>
-          <option value="market-value">market value</option>
+        <select name="searchCategory" id="searchCategory">
+          <option value="player-name" id="name" name="player-name">
+            player name
+          </option>
+          <option value="league" id="league" name="league">league</option>
+          <option value="club" id="club" name="club">club</option>
+          <option value="country" id="country" name="country">country</option>
+          <option value="market-value" id="market-value" name="market-value">
+            market value
+          </option>
         </select>
       </div>
       <div class="sorting">
-        <button type="submit" name="sortOrder" value="ASC">
+        <button type="submit" name="sortOrder" id="ASC" value="ASC">
           <i class="fa-solid fa-arrow-up-a-z"></i>
         </button>
       </div>
       <div class="sorting">
-        <button type="submit" name="sortOrder" value="DESC">
+        <button type="submit" name="sortOrder" id="DESC" value="DESC">
           <i class="fa-solid fa-arrow-up-z-a"></i>
         </button>
       </div>

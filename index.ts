@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
+import { filterPlayers } from "./search";
 
 dotenv.config();
 
@@ -22,15 +23,6 @@ function sortPlayers(players: any[], sortBy: string, order: string) {
     return players.sort((a, b) => (a[sortBy] < b[sortBy] ? 1 : -1));
   }
 }
-
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
-
-// app.post("/", (req, res) => {
-//   // Rediriger vers la page d'accueil après la connexion réussie
-//   res.redirect("/home");
-// });
 
 app.get("/", (req, res) => {
   res.render("index", {
@@ -62,10 +54,26 @@ app.get("/players", async (req, res) => {
 
 app.post("/players", async (req, res) => {
   try {
-    let searchCategory: string =
-      typeof req.query.searchCategory === "string"
-        ? req.query.searchCategory
-        : "player-name";
+    const searchTerm: string = req.body.searchTerm || "";
+    const filters = {
+      name: searchTerm,
+      league: req.body.league || "",
+      club: req.body.club || "",
+      country: req.body.country || "",
+    };
+
+    const response = await fetch(
+      "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
+    );
+    const data = await response.json();
+    const filteredPlayers = filterPlayers(data.players, filters);
+
+    res.render("players", {
+      title: "Résultats de la recherche",
+      message: "Résultats de la recherche",
+      currentPage: "players",
+      players: filteredPlayers,
+    });
   } catch (error) {
     console.log("Erreur lors de la récupération des données :", error);
     res
@@ -90,7 +98,7 @@ app.get("/players/:fullName", async (req, res) => {
       return res.status(404).send("Joueur non trouvé");
     }
 
-    const [firstName, lastName] = player.name.split(" "); // Sépare le prénom et le nom de famille
+    const [firstName, lastName] = player.name.split(" ");
     res.render("player", {
       title: `${firstName} ${lastName}`,
       message: `${firstName} ${lastName}`,
