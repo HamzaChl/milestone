@@ -15,7 +15,28 @@
     <%- include("partials/aside") %>
     <main class="home">
       <h5>Welcome to <strong>MileStone2 !</strong></h5>
-      <section class="top-home"></section>
+      <!-- <section class="top-home"></section> -->
+      <section class="dash-home">
+        <a href="/players">
+          <article class="home-item">
+            <h1>amount of players</h1>
+
+            <h4><%= numberOfPlayers %></h4>
+          </article>
+        </a>
+        <a href="/leagues">
+          <article class="home-item">
+            <h1>amount of players</h1>
+
+            <h4><%= numberOfLeagues %></h4>
+          </article>
+        </a>
+        <!-- <article class="home-item">
+          <h1>amount of players</h1>
+
+          <h4>178</h4>
+        </article> -->
+      </section>
     </main>
   </body>
 </html>

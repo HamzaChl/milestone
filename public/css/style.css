@@ -43,8 +43,9 @@ main {
 }
 
 aside {
-  min-width: 20vw;
-  width: 20vw;
+  min-width: 200px;
+  /* Définissez une largeur minimale pour éviter une réduction excessive */
+  width: 20%;
   height: 100vh;
   box-shadow: 0 8px 32px 0 rgba(15, 15, 15, 0.37);
   backdrop-filter: blur(4px);
@@ -52,6 +53,7 @@ aside {
   background: var(--aside-back);
   border-right: 2px solid var(--ligh-black);
   top: 0;
+  left: 0;
   position: fixed;
   grid-area: aside;
   box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.48);
@@ -89,6 +91,7 @@ a:hover {
 
 .home {
   height: 100vh;
+
 }
 
 .main-player {
@@ -98,13 +101,19 @@ a:hover {
 .home-item {
   background-color: var(--aside-back);
   padding: 20px;
+  /* width: 100%; */
   height: 150px;
-  /* width: 30%; */
   border: 1px solid var(--ligh-black);
   border-radius: 10px;
   text-align: center;
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.48);
+}
+
+.dash-home {
+  display: flex;
+  /* width: 100%; */
+  gap: 20px;
 }
 
 .item1 {
@@ -133,7 +142,7 @@ a:hover {
   background-color: var(--hover);
 }
 
-.top-home {
+/* .top-home {
   height: 400px;
   padding: 20px;
   display: flex;
@@ -150,9 +159,9 @@ a:hover {
 
 .top-home h1 {
   font-size: 40px;
-  /* text-shadow: 3px 3px 3px #00f652a7; */
+  /* text-shadow: 3px 3px 3px #00f652a7;
 }
-
+*/
 .stats {
   height: 70px;
   display: flex;
@@ -573,26 +582,33 @@ input[type="text"] {
   }
 
   aside {
-    /* display: none; */
-    position: relative;
-    display: flex;
-    height: 7rem;
-    width: 100vw;
+    width: 100%;
+    /* Utilisez la largeur maximale */
+    position: static;
+    /* Supprimez la position fixe pour permettre le redimensionnement */
+    height: auto;
+    /* Réglez la hauteur automatique pour permettre au contenu de s'ajuster */
     border-right: none;
     outline-right: none;
   }
 
   aside section {
-    display: flex;
+    flex-direction: column-reverse;
     border-bottom: 2px solid var(--ligh-black);
+
   }
 
   aside section article {
-    width: auto;
+    width: 100%;
+    /* Définissez une largeur de 100% pour occuper toute la largeur */
   }
 
   aside article:hover {
     border-bottom: 2px solid var(--ligh-black);
+  }
+
+  .logo-article {
+    display: none;
   }
 
   .active {

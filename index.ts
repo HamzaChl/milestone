@@ -24,12 +24,29 @@ function sortPlayers(players: any[], sortBy: string, order: string) {
   }
 }
 
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: "Hello World",
-    message: "Hello World",
-    currentPage: "home",
-  });
+app.get("/", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
+    );
+    const responseLeague = await fetch(
+      "https://hamzachl.github.io/milestone1-json/leagues.json"
+    );
+    const dataLeague = await responseLeague.json();
+    const data = await response.json();
+    const numberOfPlayers = data.players.length;
+    const numberOfLeagues = dataLeague.length;
+    res.render("index", {
+      title: "Hello World",
+      message: "Hello World",
+      currentPage: "home",
+      numberOfPlayers: numberOfPlayers,
+      numberOfLeagues: numberOfLeagues,
+    });
+  } catch (error) {
+    console.log("Erreur lors de la récupération des données :", error);
+    res.status(500).send("Une erreur s'est produite.");
+  }
 });
 
 app.get("/players", async (req, res) => {
