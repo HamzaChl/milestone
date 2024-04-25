@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { filterPlayers } from "./search";
+import { connect } from "./database";
 
 dotenv.config();
 
@@ -24,7 +25,15 @@ function sortPlayers(players: any[], sortBy: string, order: string) {
   }
 }
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+  res.render("login");
+});
+
+app.post("/", (req, res) => {
+  res.redirect("/home");
+});
+
+app.get("/home", async (req, res) => {
   try {
     const response = await fetch(
       "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
@@ -36,12 +45,14 @@ app.get("/", async (req, res) => {
     const data = await response.json();
     const numberOfPlayers = data.players.length;
     const numberOfLeagues = dataLeague.length;
+    const percentage = 60;
     res.render("index", {
       title: "Hello World",
       message: "Hello World",
       currentPage: "home",
       numberOfPlayers: numberOfPlayers,
       numberOfLeagues: numberOfLeagues,
+      percentage: percentage,
     });
   } catch (error) {
     console.log("Erreur lors de la récupération des données :", error);
@@ -165,6 +176,7 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.listen(app.get("port"), () => {
+app.listen(app.get("port"), async () => {
+  await connect();
   console.log("Server started on http://localhost:" + app.get("port"));
 });

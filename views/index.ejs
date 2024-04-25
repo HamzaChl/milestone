@@ -9,12 +9,12 @@
       src="https://kit.fontawesome.com/ccd4003a42.js"
       crossorigin="anonymous"
     ></script>
-    <title>MileStone2</title>
+    <title>MileStone3</title>
   </head>
   <body>
     <%- include("partials/aside") %>
     <main class="home">
-      <h5>Welcome to <strong>MileStone2 !</strong></h5>
+      <h5>Welcome to <strong>MileStone3 !</strong></h5>
       <!-- <section class="top-home"></section> -->
       <section class="dash-home">
         <a href="/players">
@@ -26,17 +26,24 @@
         </a>
         <a href="/leagues">
           <article class="home-item">
-            <h1>amount of players</h1>
+            <h1>amount of leagues</h1>
 
             <h4><%= numberOfLeagues %></h4>
           </article>
         </a>
-        <!-- <article class="home-item">
-          <h1>amount of players</h1>
+        <article class="home-item home-item2">
+          <h1>Limit Date:</h1>
 
-          <h4>178</h4>
-        </article> -->
+          <h4>sunday, 5 mei 2024, 23:59</h4>
+        </article>
       </section>
+      <br />
+      <article class="home-item">
+        <h4>App progress <%= percentage %>%</h4>
+        <div class="progress-bar">
+          <div class="progress" style="width: <%= percentage %>%"></div>
+        </div>
+      </article>
     </main>
   </body>
 </html>
