@@ -2,7 +2,8 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { filterPlayers } from "./search";
-import { connect } from "./database";
+import { connect, writeToDatabase } from "./database";
+import { fetchDataAndWriteToMongoDB } from "./functions";
 
 dotenv.config();
 
@@ -41,6 +42,8 @@ app.get("/home", async (req, res) => {
     const responseLeague = await fetch(
       "https://hamzachl.github.io/milestone1-json/leagues.json"
     );
+    // désactivée temporairement...
+    fetchDataAndWriteToMongoDB();
     const dataLeague = await responseLeague.json();
     const data = await response.json();
     const numberOfPlayers = data.players.length;
@@ -174,6 +177,10 @@ app.get("/settings", (req, res) => {
 
 app.get("/logout", (req, res) => {
   res.redirect("/");
+});
+
+app.use((req, res, next) => {
+  res.status(404).render("badpage", { message: "Page not found" });
 });
 
 app.listen(app.get("port"), async () => {
