@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 import { filterPlayers } from "./search";
 import { connect, writeToDatabase } from "./database";
-import { fetchDataAndWriteToMongoDB } from "./functions";
+import { fetchDataAndWriteToMongoDB, fetchDataFromMongoDB } from "./functions";
 
 dotenv.config();
 
@@ -36,18 +36,9 @@ app.post("/", (req, res) => {
 
 app.get("/home", async (req, res) => {
   try {
-    const response = await fetch(
-      "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
-    );
-    const responseLeague = await fetch(
-      "https://hamzachl.github.io/milestone1-json/leagues.json"
-    );
-    // désactivée temporairement...
-    fetchDataAndWriteToMongoDB();
-    const dataLeague = await responseLeague.json();
-    const data = await response.json();
+    const data = await fetchDataFromMongoDB();
     const numberOfPlayers = data.players.length;
-    const numberOfLeagues = dataLeague.length;
+    const numberOfLeagues = data.leagues.length;
     const percentage = 60;
     res.render("index", {
       title: "Hello World",
@@ -58,17 +49,15 @@ app.get("/home", async (req, res) => {
       percentage: percentage,
     });
   } catch (error) {
-    console.log("Erreur lors de la récupération des données :", error);
-    res.status(500).send("Une erreur s'est produite.");
+    console.log("Error fetching data:", error);
+    res.status(500).send("An error occurred.");
   }
 });
 
 app.get("/players", async (req, res) => {
   try {
-    const response = await fetch(
-      "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
-    );
-    const data = await response.json();
+    const data = await fetchDataFromMongoDB();
+
     res.render("players", {
       title: "Hello World",
       message: "Hello World",
@@ -93,10 +82,8 @@ app.post("/players", async (req, res) => {
       country: req.body.country || "",
     };
 
-    const response = await fetch(
-      "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
-    );
-    const data = await response.json();
+    const data = await fetchDataFromMongoDB();
+
     const filteredPlayers = filterPlayers(data.players, filters);
 
     res.render("players", {
@@ -116,10 +103,8 @@ app.post("/players", async (req, res) => {
 app.get("/players/:fullName", async (req, res) => {
   try {
     const { fullName } = req.params;
-    const response = await fetch(
-      "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
-    );
-    const data = await response.json();
+    const data = await fetchDataFromMongoDB();
+
     const player = data.players.find(
       (player: any) =>
         player.name.toLowerCase().replace(/\s/g, "") === fullName.toLowerCase()
@@ -146,24 +131,16 @@ app.get("/players/:fullName", async (req, res) => {
 
 app.get("/leagues", async (req, res) => {
   try {
-    const response = await fetch(
-      "https://hamzachl.github.io/milestone1-json/leagues.json"
-    );
-    const data = await response.json();
+    const data = await fetchDataFromMongoDB();
     res.render("leagues", {
       title: "Titre de la page des ligues",
       message: "Message de la page des ligues",
       currentPage: "leagues",
-      leagues: data,
+      leagues: data.leagues,
     });
   } catch (error) {
-    console.log(
-      "Erreur lors de la récupération des données des ligues :",
-      error
-    );
-    res
-      .status(500)
-      .send("Une erreur s'est produite lors du chargement des ligues.");
+    console.log(`error : ${error}`, error);
+    res.status(500).send(`error : ${error}`);
   }
 });
 
@@ -184,6 +161,11 @@ app.use((req, res, next) => {
 });
 
 app.listen(app.get("port"), async () => {
-  await connect();
-  console.log("Server started on http://localhost:" + app.get("port"));
+  try {
+    await connect();
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+    process.exit(1); // Exit process with failure
+  }
 });

@@ -1,4 +1,5 @@
 // IMPORTS
+import { fetchDataAndWriteToMongoDB } from "./functions";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 
@@ -6,39 +7,19 @@ dotenv.config();
 const uri: string = process.env.MONGO_URI ?? "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
-async function exit() {
-  try {
-    await client.close();
-    console.log("Disconnected from database");
-  } catch (error) {
-    console.error(error);
-  }
-  process.exit(0);
-}
-
+//GENGENEREERD
+//GENGENEREERD
 export async function writeToDatabase(collectionName: string, data: any[]) {
   try {
     const collection = client.db("milestone").collection(collectionName);
 
     for (const doc of data) {
-      if (!doc.id && collectionName === "players") {
+      if (!doc.id) {
         console.warn(`Skipping document without ID: ${JSON.stringify(doc)}`);
         continue;
       }
 
-      let query: any;
-      if (collectionName === "players") {
-        query = { id: doc.id };
-      } else {
-        const clubInfos = doc["club-infos"];
-        if (!clubInfos || !clubInfos.id) {
-          console.warn(
-            `Skipping document without club ID: ${JSON.stringify(doc)}`
-          );
-          continue;
-        }
-        query = { id: doc.id, "club-infos.id": clubInfos.id };
-      }
+      const query = { id: doc.id };
 
       const existingDoc = await collection.findOne(query);
       if (existingDoc) {
@@ -68,6 +49,18 @@ export async function writeToDatabase(collectionName: string, data: any[]) {
   }
 }
 
+//EXIT FUNCTIE VOOR CONNECT
+async function exit() {
+  try {
+    await client.close();
+    console.log("Disconnected from database");
+  } catch (error) {
+    console.error(error);
+  }
+  process.exit(0);
+}
+
+//CONNECT FUNCTIE
 export async function connect() {
   try {
     await client.connect();
@@ -83,6 +76,7 @@ export async function connect() {
     } else {
       console.log("Data found in database. Using existing data.");
     }
+    await fetchDataAndWriteToMongoDB();
 
     process.on("SIGINT", exit);
   } catch (error) {

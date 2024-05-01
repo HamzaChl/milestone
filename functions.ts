@@ -1,4 +1,12 @@
+import { MongoClient } from "mongodb";
 import { connect, writeToDatabase } from "./database";
+import dotenv from "dotenv";
+
+dotenv.config();
+const uri: string = process.env.MONGO_URI ?? "mongodb://localhost:27017";
+const client = new MongoClient(uri);
+
+//FETCH NAAR MONGODB
 
 export async function fetchDataAndWriteToMongoDB() {
   try {
@@ -10,18 +18,41 @@ export async function fetchDataAndWriteToMongoDB() {
     );
 
     const dataPlayers = await responsePlayers.json();
-    let dataLeagues = await responseLeagues.json();
-
-    if (!Array.isArray(dataLeagues)) {
-      // Als dataLeagues geen array is, probeer de leagues property te gebruiken
-      dataLeagues = dataLeagues.leagues || [];
-    }
+    const dataLeagues = await responseLeagues.json();
 
     await writeToDatabase("players", dataPlayers.players);
-    await writeToDatabase("leagues", dataLeagues);
+    await writeToDatabase("leagues", dataLeagues.leagues);
 
     console.log("Data fetched and written to MongoDB successfully.");
   } catch (error) {
     console.error("Error fetching and writing data to MongoDB:", error);
+  }
+}
+
+//FETCH FUNCTIE VANAF MONGODB
+
+export async function fetchDataFromMongoDB() {
+  try {
+    await client.connect();
+
+    console.log("Connected to MongoDB");
+
+    const database = client.db("milestone");
+    const playersCollection = database.collection("players");
+    const leaguesCollection = database.collection("leagues");
+
+    const players = await playersCollection.find({}).toArray();
+
+    const leagues = await leaguesCollection.find({}).toArray();
+
+    return {
+      players: players,
+      leagues: leagues,
+    };
+  } catch (error) {
+    throw new Error("Error fetching data from MongoDB: " + error);
+  } finally {
+    await client.close();
+    // console.log("Disconnected from MongoDB");
   }
 }
