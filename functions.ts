@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-import { connect, writeToDatabase } from "./database";
+import { connect } from "./database";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -10,6 +10,8 @@ const client = new MongoClient(uri);
 
 export async function fetchDataAndWriteToMongoDB() {
   try {
+    await client.connect();
+
     const responsePlayers = await fetch(
       "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
     );
@@ -54,5 +56,46 @@ export async function fetchDataFromMongoDB() {
   } finally {
     await client.close();
     // console.log("Disconnected from MongoDB");
+  }
+}
+
+//GENGENEREERD
+export async function writeToDatabase(collectionName: string, data: any[]) {
+  try {
+    const collection = client.db("milestone").collection(collectionName);
+
+    for (const doc of data) {
+      if (!doc.id) {
+        console.warn(`Skipping document without ID: ${JSON.stringify(doc)}`);
+        continue;
+      }
+
+      const query = { id: doc.id };
+
+      const existingDoc = await collection.findOne(query);
+      if (existingDoc) {
+        console.log(
+          `Document with ID ${doc.id} already exists in collection ${collectionName}, skipping.`
+        );
+      } else {
+        await collection.updateOne(
+          { id: doc.id },
+          { $set: doc },
+          { upsert: true }
+        );
+        console.log(
+          `Document with ID ${doc.id} inserted/updated in collection ${collectionName}.`
+        );
+      }
+    }
+
+    console.log(
+      `${data.length} documents inserted into MongoDB collection: ${collectionName}.`
+    );
+  } catch (error) {
+    console.error(
+      `Error writing to database collection ${collectionName}:`,
+      error
+    );
   }
 }

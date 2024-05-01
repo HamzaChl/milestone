@@ -2,8 +2,12 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { filterPlayers } from "./search";
-import { connect, writeToDatabase } from "./database";
-import { fetchDataAndWriteToMongoDB, fetchDataFromMongoDB } from "./functions";
+import { connect } from "./database";
+import {
+  fetchDataAndWriteToMongoDB,
+  fetchDataFromMongoDB,
+  writeToDatabase,
+} from "./functions";
 
 dotenv.config();
 
@@ -102,8 +106,8 @@ app.post("/players", async (req, res) => {
 
 app.get("/players/:fullName", async (req, res) => {
   try {
-    const { fullName } = req.params;
     const data = await fetchDataFromMongoDB();
+    const { fullName } = req.params;
 
     const player = data.players.find(
       (player: any) =>
@@ -111,7 +115,9 @@ app.get("/players/:fullName", async (req, res) => {
     );
 
     if (!player) {
-      return res.status(404).send("Joueur non trouvé");
+      return res
+        .status(404)
+        .send("Er is een fout opgetreden tijdens het laden van de leagues.");
     }
 
     const [firstName, lastName] = player.name.split(" ");
@@ -125,7 +131,38 @@ app.get("/players/:fullName", async (req, res) => {
     console.log("Erreur lors de la récupération des données :", error);
     res
       .status(500)
-      .send("Une erreur s'est produite lors du chargement du joueur.");
+      .send("Er is een fout opgetreden tijdens het laden van de speler.");
+  }
+});
+
+app.get("/leagues/:fullName", async (req, res) => {
+  try {
+    const data = await fetchDataFromMongoDB();
+    const { fullName } = req.params;
+
+    const league = data.leagues.find(
+      (league: any) =>
+        league.League.toLowerCase().replace(/\s/g, "") ===
+        fullName.toLowerCase()
+    );
+
+    if (!league) {
+      return res
+        .status(404)
+        .send("Er is een fout opgetreden tijdens het laden van de league.");
+    }
+
+    // We hebben hier geen namen, dus we gebruiken de volledige league-naam
+    res.render("league", {
+      league: data.leagues,
+      message: league.League, // We kunnen ook gewoon de league-naam gebruiken
+      currentPage: "leagues",
+    });
+  } catch (error) {
+    console.log("Error fetching data:", error);
+    res
+      .status(500)
+      .send("Er is een fout opgetreden tijdens het laden van de league.");
   }
 });
 
