@@ -16,21 +16,55 @@ async function exit() {
   process.exit(0);
 }
 
-export async function writeToDatabase(data: any[]) {
+export async function writeToDatabase(collectionName: string, data: any[]) {
   try {
-    const collection = client.db("milestone").collection("players");
-    const existingIds = await collection.distinct("id");
-    const newData = data.filter((doc) => !existingIds.includes(doc.id));
-    if (newData.length === 0) {
-      console.log("No new data to insert.");
-      return;
+    const collection = client.db("milestone").collection(collectionName);
+
+    for (const doc of data) {
+      if (!doc.id && collectionName === "players") {
+        console.warn(`Skipping document without ID: ${JSON.stringify(doc)}`);
+        continue;
+      }
+
+      let query: any;
+      if (collectionName === "players") {
+        query = { id: doc.id };
+      } else {
+        const clubInfos = doc["club-infos"];
+        if (!clubInfos || !clubInfos.id) {
+          console.warn(
+            `Skipping document without club ID: ${JSON.stringify(doc)}`
+          );
+          continue;
+        }
+        query = { id: doc.id, "club-infos.id": clubInfos.id };
+      }
+
+      const existingDoc = await collection.findOne(query);
+      if (existingDoc) {
+        console.log(
+          `Document with ID ${doc.id} already exists in collection ${collectionName}, skipping.`
+        );
+      } else {
+        await collection.updateOne(
+          { id: doc.id },
+          { $set: doc },
+          { upsert: true }
+        );
+        console.log(
+          `Document with ID ${doc.id} inserted/updated in collection ${collectionName}.`
+        );
+      }
     }
 
-    await collection.deleteMany({});
-    await collection.insertMany(newData);
-    console.log(`${newData.length} new documents inserted into MongoDB.`);
+    console.log(
+      `${data.length} documents inserted into MongoDB collection: ${collectionName}.`
+    );
   } catch (error) {
-    console.error("Error writing to database:", error);
+    console.error(
+      `Error writing to database collection ${collectionName}:`,
+      error
+    );
   }
 }
 

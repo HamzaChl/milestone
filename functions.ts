@@ -10,11 +10,15 @@ export async function fetchDataAndWriteToMongoDB() {
     );
 
     const dataPlayers = await responsePlayers.json();
-    const dataLeagues = await responseLeagues.json();
+    let dataLeagues = await responseLeagues.json();
 
-    await writeToDatabase(dataPlayers.players);
-    // await writeToDatabase(dataPlayers);
-    // await writeToDatabase(dataLeagues);
+    if (!Array.isArray(dataLeagues)) {
+      // Als dataLeagues geen array is, probeer de leagues property te gebruiken
+      dataLeagues = dataLeagues.leagues || [];
+    }
+
+    await writeToDatabase("players", dataPlayers.players);
+    await writeToDatabase("leagues", dataLeagues);
 
     console.log("Data fetched and written to MongoDB successfully.");
   } catch (error) {
