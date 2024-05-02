@@ -69,10 +69,10 @@ app.get("/players", async (req, res) => {
       players: data.players,
     });
   } catch (error) {
-    console.log("Erreur lors de la récupération des données :", error);
+    console.log("Error :", error);
     res
       .status(500)
-      .send("Une erreur s'est produite lors du chargement des joueurs.");
+      .send("Er is een fout opgetreden tijdens het laden van de spelers.");
   }
 });
 
@@ -152,10 +152,9 @@ app.get("/leagues/:fullName", async (req, res) => {
         .send("Er is een fout opgetreden tijdens het laden van de league.");
     }
 
-    // We hebben hier geen namen, dus we gebruiken de volledige league-naam
     res.render("league", {
-      league: data.leagues,
-      message: league.League, // We kunnen ook gewoon de league-naam gebruiken
+      lname: league.League,
+      lcountry: league.Country,
       currentPage: "leagues",
     });
   } catch (error) {
@@ -170,8 +169,7 @@ app.get("/leagues", async (req, res) => {
   try {
     const data = await fetchDataFromMongoDB();
     res.render("leagues", {
-      title: "Titre de la page des ligues",
-      message: "Message de la page des ligues",
+      title: "Leagues",
       currentPage: "leagues",
       leagues: data.leagues,
     });

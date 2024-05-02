@@ -74,9 +74,10 @@ export async function writeToDatabase(collectionName: string, data: any[]) {
 
       const existingDoc = await collection.findOne(query);
       if (existingDoc) {
-        console.log(
-          `Document with ID ${doc.id} already exists in collection ${collectionName}, skipping.`
-        );
+        //CHECK
+        // console.log(
+        //   `Document with ID ${doc.id} already exists in collection ${collectionName}, skipping.`
+        // );
       } else {
         await collection.updateOne(
           { id: doc.id },
