@@ -116,3 +116,33 @@ export function sortLeagues(leagues: any[], sortBy: string, order: string) {
     return leagues.sort((a, b) => (a[sortBy] < b[sortBy] ? 1 : -1));
   }
 }
+
+//UPDATE FUNCTIE
+
+export async function updatePlayerNameByFullName(
+  fullName: string,
+  newName: string
+) {
+  try {
+    await client.connect();
+
+    const database = client.db("milestone");
+    const collection = database.collection("players");
+
+    await collection.updateOne(
+      { fullName: fullName },
+      { $set: { name: newName } }
+    );
+
+    console.log(
+      `Naam van speler met volledige naam ${fullName} is bijgewerkt.`
+    );
+  } catch (error) {
+    console.error("Fout bij het bijwerken van de speler:", error);
+    throw new Error(
+      "Er is een fout opgetreden bij het bijwerken van de speler."
+    );
+  } finally {
+    await client.close();
+  }
+}

@@ -1,6 +1,11 @@
 import express, { Express } from "express";
 import { filterPlayers } from "../search";
-import { fetchDataFromMongoDB, sortPlayers, sortLeagues } from "../functions";
+import {
+  fetchDataFromMongoDB,
+  sortPlayers,
+  sortLeagues,
+  updatePlayerNameByFullName,
+} from "../functions";
 
 export default function milestoneRouter() {
   const router = express.Router();
@@ -107,6 +112,7 @@ export default function milestoneRouter() {
         currentPage: "players",
         player: player,
         league: league,
+        fullName: fullName,
       });
     } catch (error) {
       console.log("Error fetching data:", error);
@@ -147,6 +153,48 @@ export default function milestoneRouter() {
       res
         .status(500)
         .send("Er is een fout opgetreden tijdens het laden van de league.");
+    }
+  });
+
+  router.get("/players/:fullName/edit", async (req, res) => {
+    try {
+      const fullName = req.params.fullName;
+      const data = await fetchDataFromMongoDB();
+      const player = data.players.find(
+        (p: any) =>
+          p.name.toLowerCase().replace(/\s/g, "") === fullName.toLowerCase()
+      );
+
+      if (!player) {
+        return res.status(404).send("Speler niet gevonden.");
+      }
+
+      res.render("editPlayer", {
+        title: "Speler bewerken",
+        player: player,
+        currentPage: "players",
+      });
+    } catch (error) {
+      console.error("Fout bij het laden van de speler:", error);
+      res
+        .status(500)
+        .send("Er is een fout opgetreden bij het laden van de speler.");
+    }
+  });
+
+  router.post("/players/:fullName/edit", async (req, res) => {
+    try {
+      const fullName = req.params.fullName;
+      const newName = req.body.name;
+
+      await updatePlayerNameByFullName(fullName, newName);
+      res.redirect(`/milestone/players/${fullName}`);
+      console.log(fullName);
+    } catch (error) {
+      console.error("Fout bij het bewerken van de speler:", error);
+      res
+        .status(500)
+        .send("Er is een fout opgetreden bij het bewerken van de speler.");
     }
   });
 
