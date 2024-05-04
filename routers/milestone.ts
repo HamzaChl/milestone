@@ -92,11 +92,14 @@ export default function milestoneRouter() {
 
       const [firstName, lastName] = player.name.split(" ");
 
-      const league = data.leagues.find(
-        (league: any) =>
-          league.League.toLowerCase().replace(/\s/g, "") ===
-          player.league.toLowerCase()
-      );
+      let league = null;
+      if (player.league) {
+        league = data.leagues.find(
+          (league: any) =>
+            league.League.toLowerCase().replace(/\s/g, "") ===
+            player.league.toLowerCase()
+        );
+      }
 
       res.render("player", {
         title: `${firstName} ${lastName}`,
@@ -134,7 +137,8 @@ export default function milestoneRouter() {
         lname: league.League,
         lcountry: league.Country,
         lactive: league.Active,
-        lupdated: league.Last_Updated,
+        lupdated: league["Last Updated"],
+        lvalue: league["Total Market Value"],
         currentPage: "leagues",
         league: league,
       });

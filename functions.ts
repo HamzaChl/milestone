@@ -37,8 +37,6 @@ export async function fetchDataFromMongoDB() {
   try {
     await client.connect();
 
-    console.log("Connected to MongoDB");
-
     const database = client.db("milestone");
     const playersCollection = database.collection("players");
     const leaguesCollection = database.collection("leagues");
