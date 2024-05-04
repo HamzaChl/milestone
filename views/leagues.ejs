@@ -24,7 +24,12 @@
                 <div class="icon <%= leagues[i].Active === 'active' ? 'player-active' : 'player-inactive' %>"></div>
             </td>
               <td  class="mobile-td"><%= leagues[i]['Last Updated'] %></td>
-              <td><a href="">view</a></td>
+              <td>
+                <a
+                  href="/milestone/leagues/<%= leagues[i].League.toLowerCase().replace(/\s/g, '') %>"
+                  >view</a
+                >
+              </td>
 
           </tr>
       <% } %>

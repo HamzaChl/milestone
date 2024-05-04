@@ -1,6 +1,6 @@
 <form action="/players" method="post">
   <section class="search">
-    <div class="input-wrapper">
+    <div class="input-wrapper light-hover">
       <input
         type="text"
         placeholder="search"
@@ -22,22 +22,23 @@
           </option>
         </select>
       </div> -->
-      <div class="sorting">
+      <div class="sorting light-hover">
         <button type="submit" name="sortOrder" id="ASC" value="ASC">
           <i class="fa-solid fa-arrow-up-a-z"></i>
         </button>
       </div>
-      <div class="sorting">
+      <div class="sorting light-hover">
         <button type="submit" name="sortOrder" id="DESC" value="DESC">
           <i class="fa-solid fa-arrow-up-z-a"></i>
         </button>
       </div>
-      <div class="submit">
+      <div class="submit light-hover">
         <button type="submit">SEARCH</button>
       </div>
-      <div class="reset">
-        <button type="submit">RESET</button>
+      <div class="reset light-hover">
+        <form action="/players" method="post">
+          <button type="submit">RESET</button>
+        </form>
       </div>
-    </div>
   </section>
 </form>

@@ -212,6 +212,10 @@ h5 {
   color: rgb(150, 150, 150);
 }
 
+.sub-welcome {
+  margin-top: -50px;
+}
+
 h5 strong {
   color: var(--fluo);
 }
@@ -509,6 +513,48 @@ input[type="text"] {
   font-size: 30px;
   margin-top: 0;
   font-weight: bold;
+}
+
+.error-text {
+  font-size: 20rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0px;
+
+}
+
+.error-p {
+  color: white;
+}
+
+.error-main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.voetbal {
+  background-image: url(../assets/images/voetbal.png);
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+}
+
+.light-hover:hover {
+  filter: drop-shadow(0 0 0.75rem rgba(13, 255, 0, 0.277));
+  transition: all 0.3s ease-out;
+
 }
 
 @media screen and (max-width: 1230px) {

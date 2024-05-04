@@ -33,13 +33,14 @@ export async function connect() {
       console.log(
         "No data in database. Fetching data and writing to database..."
       );
+      await fetchDataAndWriteToMongoDB();
     } else {
       console.log("Data found in database. Using existing data.");
     }
-    await fetchDataAndWriteToMongoDB();
 
     process.on("SIGINT", exit);
   } catch (error) {
-    console.error(error);
+    console.error("Error connecting to MongoDB:", error);
+    process.exit(1);
   }
 }

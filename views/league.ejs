@@ -1,7 +1,50 @@
 <%- include("partials/head") %> <%- include("partials/aside") %>
 <main>
-  <h1><%= lname %></h1>
-  <h1><%= lcountry %></h1>
+  <a href="/milestone/leagues"
+    ><i class="fa-solid fa-arrow-left-long"></i> Go back</a
+  >
+
+  <section class="details-container">
+    <div class="detail-img" style="background-image: url('')"></div>
+    <div>
+      <h1 class="head-title">
+        <%= lname %>
+        <div
+          id="active"
+          class="<%= lactive === 'active' ? 'player-active' : 'player-inactive' %>"
+        >
+          <div
+            class="icon <%= lactive === 'active' ? 'player-active' : 'player-inactive' %>"
+          ></div>
+        </div>
+        <span class="edit">
+          <a href=""><i class="fa-solid fa-highlighter fa-2xs"></i></a>
+        </span>
+      </h1>
+
+      <p class="details-player">
+        <i class="fa-solid fa-calendar-days"></i
+        ><strong>Last Updated: <%= lupdated %> </strong>
+      </p>
+
+      <p class="details-player">
+        <i class="fa-solid fa-people-group"></i><strong>Club: </strong>
+        <td></td>
+      </p>
+      <p class="details-player">
+        <i class="fa-solid fa-trophy"></i><strong>League: </strong>
+        <td></td>
+      </p>
+      <p class="details-player">
+        <i class="fa-solid fa-earth-americas"></i><strong>Country: </strong>
+        <td></td>
+      </p>
+
+      <span class="marketValue"
+        ><i class="fa-solid fa-money-bill-transfer"></i>:
+      </span>
+    </div>
+  </section>
 </main>
 
 <%- include("partials/footer") %>

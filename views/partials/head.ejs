@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="icon" type="image/x-icon" href="/assets/images/logo-fc.webp" />
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <script
       src="https://kit.fontawesome.com/ccd4003a42.js"
       crossorigin="anonymous"
     ></script>
     <title>MileStone3</title>
+    <script>
+      const lenis = new Lenis();
+
+      lenis.on("scroll", (e) => {});
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      function scrollBehaviorChange() {
+        document.documentElement.style.scrollBehavior = "smooth";
+        setTimeout(() => {
+          document.documentElement.style.scrollBehavior = "auto";
+        }, 200);
+      }
+    </script>
   </head>
   <body></body>
 </html>

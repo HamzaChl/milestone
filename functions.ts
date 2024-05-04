@@ -100,3 +100,21 @@ export async function writeToDatabase(collectionName: string, data: any[]) {
     );
   }
 }
+
+//ZOEKFUNCTIE
+
+export function sortPlayers(players: any[], sortBy: string, order: string) {
+  if (order === "ASC") {
+    return players.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1));
+  } else {
+    return players.sort((a, b) => (a[sortBy] < b[sortBy] ? 1 : -1));
+  }
+}
+
+export function sortLeagues(leagues: any[], sortBy: string, order: string) {
+  if (order === "ASC") {
+    return leagues.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1));
+  } else {
+    return leagues.sort((a, b) => (a[sortBy] < b[sortBy] ? 1 : -1));
+  }
+}

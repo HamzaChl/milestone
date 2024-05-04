@@ -1,29 +1,31 @@
 <%- include("partials/head") %> <%- include("partials/aside") %>
 <main class="home">
-  <h5>Welcome to <strong>MileStone3 !</strong></h5>
+  <h5>Hello User,</h5>
+  <!-- <br /> -->
+  <h5 class="sub-welcome">Welcome to <strong>MileStone3 !</strong></h5>
   <section class="dash-home">
-    <a href="/players">
-      <article class="home-item">
+    <a href="/milestone/players">
+      <article class="home-item light-hover">
         <h1>amount of players</h1>
 
         <h4><i class="fa-solid fa-users"></i><%= numberOfPlayers %></h4>
       </article>
     </a>
-    <a href="/leagues">
-      <article class="home-item">
+    <a href="/milestone/leagues">
+      <article class="home-item light-hover">
         <h1>amount of leagues</h1>
 
         <h4><i class="fa-solid fa-trophy"></i><%= numberOfLeagues %></h4>
       </article>
     </a>
-    <article class="home-item home-item2">
+    <article class="home-item home-item2 light-hover">
       <h1>Limit Date:</h1>
 
       <h4><i class="fa-solid fa-calendar"></i>sunday, 5 mei 2024, 23:59</h4>
     </article>
   </section>
   <br />
-  <article class="home-item">
+  <article class="home-item light-hover">
     <h4>App progress <%= percentage %>%</h4>
     <div class="progress-bar">
       <div class="progress" style="width: <%= percentage %>%"></div>
