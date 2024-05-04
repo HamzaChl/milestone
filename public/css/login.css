@@ -52,7 +52,7 @@ input[type=password] {
 }
 
 .img-holder {
-    background-image: url(../assets/images/login.jpg);
+    background-image: url(../assets/images/new-login.jpg);
     background-position: left;
     background-size: cover;
     height: 100%;
@@ -79,6 +79,8 @@ button {
 /* Add a hover effect for buttons */
 button:hover {
     opacity: 0.8;
+    filter: drop-shadow(0 0 0.75rem rgba(13, 255, 0, 0.277));
+    transition: all 0.3s ease-out;
 }
 
 h1 {
