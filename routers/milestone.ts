@@ -5,6 +5,7 @@ import {
   sortPlayers,
   sortLeagues,
   updatePlayerNameByFullName,
+  updatePlayerNameById,
 } from "../functions";
 
 export default function milestoneRouter() {
@@ -187,9 +188,21 @@ export default function milestoneRouter() {
       const fullName = req.params.fullName;
       const newName = req.body.name;
 
-      await updatePlayerNameByFullName(fullName, newName);
-      res.redirect(`/milestone/players/${fullName}`);
-      console.log(fullName);
+      // Je moet de speler-id vinden op basis van de volledige naam
+      const data = await fetchDataFromMongoDB();
+      const player = data.players.find(
+        (p: any) =>
+          p.name.toLowerCase().replace(/\s/g, "") === fullName.toLowerCase()
+      );
+
+      if (!player) {
+        return res.status(404).send("Speler niet gevonden.");
+      }
+
+      // Roep de update-functie aan met de speler-id
+      await updatePlayerNameById(player.id, newName);
+      res.redirect(`/milestone/players/${newName}`); // Redirect naar de nieuwe naam
+      console.log(newName);
     } catch (error) {
       console.error("Fout bij het bewerken van de speler:", error);
       res

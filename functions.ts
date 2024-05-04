@@ -146,3 +146,26 @@ export async function updatePlayerNameByFullName(
     await client.close();
   }
 }
+
+export async function updatePlayerNameById(playerId: string, newName: string) {
+  try {
+    await client.connect();
+
+    const database = client.db("milestone");
+    const collection = database.collection("players");
+
+    await collection.updateOne(
+      { id: playerId }, // Zoek de speler op basis van de speler-id
+      { $set: { name: newName } } // Update de naam van de speler
+    );
+
+    console.log(`Naam van speler met ID ${playerId} is bijgewerkt.`);
+  } catch (error) {
+    console.error("Fout bij het bijwerken van de speler:", error);
+    throw new Error(
+      "Er is een fout opgetreden bij het bijwerken van de speler."
+    );
+  } finally {
+    await client.close();
+  }
+}
