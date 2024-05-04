@@ -1,4 +1,4 @@
-# Voetbal Web App
+# ⚽️ Voetbal Web App
 
 Dit project is een webtoepassing gebouwd met Express.js, EJS (Embedded JavaScript), TypeScript en MongoDB. Het stelt gebruikers in staat om voetbalgerelateerde gegevens te bekijken en te beheren.
 
