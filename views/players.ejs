@@ -31,7 +31,15 @@
             <%= players[i].name %>
           </div>
         </td>
-        <td class="mobile-td"><%= players[i]['club-infos'].league %></td>
+        <td class="mobile-td">
+          <% if (players[i]['club-infos'].league !== 'N/A') { %>
+          <a
+            class="td-link"
+            href="/milestone/leagues/<%= players[i]['club-infos'].league.toLowerCase().replace(/\s/g, '') %>"
+            ><%= players[i]['club-infos'].league %></a
+          >
+          <% } else { %> <%= players[i]['club-infos'].league %> <% } %>
+        </td>
         <td class="mobile-td"><%= players[i]['club-infos'].club %></td>
         <td class="mobile-td"><%= players[i].marketValue %></td>
         <td class="mobile-td"><%= players[i].nationality %></td>

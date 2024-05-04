@@ -1,44 +1,26 @@
-<form action="/milestone/players" method="post">
+<form action="/milestone/players" method="post" id="searchForm">
   <section class="search">
     <div class="input-wrapper light-hover">
       <input
         type="text"
-        placeholder="search"
+        placeholder="Search by name"
         id="searchTerm"
         name="searchTerm"
       />
     </div>
-    <div class="main-sort">
-      <!-- <div>
-        <select name="searchCategory" id="searchCategory">
-          <option value="player-name" id="name" name="player-name">
-            player name
-          </option>
-          <option value="league" id="league" name="league">league</option>
-          <option value="club" id="club" name="club">club</option>
-          <option value="country" id="country" name="country">country</option>
-          <option value="market-value" id="market-value" name="market-value">
-            market value
-          </option>
-        </select>
-      </div> -->
-      <div class="sorting light-hover">
-        <button type="submit" name="sortOrder" id="ASC" value="ASC">
-          <i class="fa-solid fa-arrow-up-a-z"></i>
-        </button>
-      </div>
-      <div class="sorting light-hover">
-        <button type="submit" name="sortOrder" id="DESC" value="DESC">
-          <i class="fa-solid fa-arrow-up-z-a"></i>
-        </button>
-      </div>
-      <div class="submit light-hover">
-        <button type="submit">SEARCH</button>
-      </div>
-      <div class="reset light-hover">
-        <!-- <form action="/milestone/players" method="post"> -->
-          <button type="submit" onclick="location.href='/milestone/players'">RESET</button>
-        <!-- </form> -->
-      </div>
+    <div class="submit light-hover">
+      <button type="submit">SEARCH</button>
+    </div>
+    <div class="reset light-hover">
+      <button type="button" onclick="window.location.href='/milestone/players'">
+        RESET
+      </button>
+    </div>
+    <div class="sorting light-hover">
+      <button type="button" onclick="sortPlayers('ASC')">ASC</button>
+    </div>
+    <div class="sorting light-hover">
+      <button type="button" onclick="sortPlayers('DESC')">DESC</button>
+    </div>
   </section>
 </form>

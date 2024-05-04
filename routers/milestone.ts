@@ -1,8 +1,5 @@
 import express, { Express } from "express";
-import dotenv from "dotenv";
-import path from "path";
 import { filterPlayers } from "../search";
-import { connect } from "../database";
 import { fetchDataFromMongoDB, sortPlayers, sortLeagues } from "../functions";
 
 export default function milestoneRouter() {
@@ -13,7 +10,7 @@ export default function milestoneRouter() {
       const data = await fetchDataFromMongoDB();
       const numberOfPlayers = data.players.length;
       const numberOfLeagues = data.leagues.length;
-      const percentage = 80;
+      const percentage = 75;
       res.render("index", {
         title: "Hello World",
         currentPage: "home",
@@ -56,6 +53,7 @@ export default function milestoneRouter() {
         club: req.body.club || "",
         country: req.body.country || "",
       };
+      let country: string = req.body.sortOrder;
 
       const data = await fetchDataFromMongoDB();
 
@@ -89,18 +87,26 @@ export default function milestoneRouter() {
       if (!player) {
         return res
           .status(404)
-          .send("Er is een fout opgetreden tijdens het laden van de leagues.");
+          .send("Er is een fout opgetreden tijdens het laden van de speler.");
       }
 
       const [firstName, lastName] = player.name.split(" ");
+
+      const league = data.leagues.find(
+        (league: any) =>
+          league.League.toLowerCase().replace(/\s/g, "") ===
+          player.league.toLowerCase()
+      );
+
       res.render("player", {
         title: `${firstName} ${lastName}`,
         message: `${firstName} ${lastName}`,
         currentPage: "players",
         player: player,
+        league: league,
       });
     } catch (error) {
-      console.log("Erreur lors de la récupération des données :", error);
+      console.log("Error fetching data:", error);
       res
         .status(500)
         .send("Er is een fout opgetreden tijdens het laden van de speler.");
@@ -130,6 +136,7 @@ export default function milestoneRouter() {
         lactive: league.Active,
         lupdated: league.Last_Updated,
         currentPage: "leagues",
+        league: league,
       });
     } catch (error) {
       console.log("Error fetching data:", error);

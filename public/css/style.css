@@ -554,7 +554,11 @@ input[type="text"] {
 .light-hover:hover {
   filter: drop-shadow(0 0 0.75rem rgba(13, 255, 0, 0.277));
   transition: all 0.3s ease-out;
+}
 
+.td-link {
+  color: white;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1230px) {
@@ -707,6 +711,13 @@ input[type="text"] {
   body {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 610px) {
+
+  .home-item h1 {
+    font-size: 15px;
   }
 }
 
