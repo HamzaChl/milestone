@@ -461,7 +461,9 @@ button:hover {
   box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.48);
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="number"],
+input[type="date"] {
   width: 400px;
   padding: 15px;
   padding-left: 35px;
@@ -473,6 +475,11 @@ input[type="text"] {
   color: lightgray;
   box-shadow: 10px 10px 28px 0px rgba(0, 0, 0, 0.31);
   outline: none;
+}
+
+.edit-input {
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .fa-highlighter {
@@ -559,8 +566,9 @@ input[type="text"] {
 
 label {
   color: white;
-
 }
+
+
 
 .edit-icon:hover {
   color: #00F652

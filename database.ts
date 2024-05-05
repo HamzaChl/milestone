@@ -7,8 +7,6 @@ dotenv.config();
 const uri: string = process.env.MONGO_URI ?? "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 
-//GENGENEREERD
-
 //EXIT FUNCTIE VOOR CONNECT
 async function exit() {
   try {

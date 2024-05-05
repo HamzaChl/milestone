@@ -1,15 +1,51 @@
 <%- include("partials/head") %> <%- include("partials/aside") %>
+
 <main>
+  <h1>Edit Player</h1>
+  <form action="" method="POST">
+    <label for="name">Name:</label><br />
+    <input
+      class="edit-input"
+      type="text"
+      id="name"
+      name="name"
+      value="<%= player.name %>"
+    /><br />
 
+    <label for="age">Age:</label><br />
+    <input
+      class="edit-input"
+      type="number"
+      id="age"
+      name="age"
+      value="<%= player.age %>"
+    /><br />
 
-    <h1>Edit Player</h1>
-    <form action="" method="POST">
-        <label for="name">Name:</label><br><br>
-        <input class="light-hover" type="text" id="name" name="name" value="<%= player.name %>"><br>
-        
-        <br>
-        <button class="light-hover" type="submit">Save Changes</button>
-    </form>
+    <label for="birthdate">Birthdate:</label><br />
+    <input
+      class="edit-input"
+      type="date"
+      id="birthdate"
+      name="birthdate"
+      value="<%= player.birthdate %>"
+    /><br />
+
+    <label for="league">League:</label><br />
+    <select class="edit-input" id="league" name="league">
+      <option value="premier">Premier League</option>
+      <option value="laliga">La Liga</option>
+      <option value="seriea">Serie A</option></select
+    ><br />
+
+    <label for="club">Club:</label><br />
+    <input
+      class="edit-input"
+      type="text"
+      id="club"
+      name="club"
+      value="<%= player.club %>"
+    /><br />
+
+    <button type="submit">Save Changes</button>
+  </form>
 </main>
-</body>
-</html>

@@ -4,9 +4,10 @@ import {
   fetchDataFromMongoDB,
   sortPlayers,
   sortLeagues,
-  updatePlayerNameByFullName,
-  updatePlayerNameById,
+  updatePlayerById,
 } from "../functions";
+
+const pages = ["home", "players", "leagues", "settings", "logout"];
 
 export default function milestoneRouter() {
   const router = express.Router();
@@ -186,9 +187,16 @@ export default function milestoneRouter() {
   router.post("/players/:fullName/edit", async (req, res) => {
     try {
       const fullName = req.params.fullName;
-      const newName = req.body.name;
+      const newData = {
+        name: req.body.name,
+        age: req.body.age,
+        birthdate: req.body.birthdate,
+        league: req.body.league,
+        position: req.body.position,
+      };
 
-      // Je moet de speler-id vinden op basis van de volledige naam
+      console.log("Nieuwe gegevens:", newData); // Controleren welke gegevens worden ontvangen
+
       const data = await fetchDataFromMongoDB();
       const player = data.players.find(
         (p: any) =>
@@ -200,9 +208,11 @@ export default function milestoneRouter() {
       }
 
       // Roep de update-functie aan met de speler-id
-      await updatePlayerNameById(player.id, newName);
-      res.redirect(`/milestone/players/${newName}`); // Redirect naar de nieuwe naam
-      console.log(newName);
+      await updatePlayerById(player.id, newData);
+
+      // Verwijder spaties uit de naam van de speler voor de redirect
+      const redirectName = newData.name.replace(/\s/g, "").toLowerCase();
+      res.redirect(`/milestone/players/${redirectName}`);
     } catch (error) {
       console.error("Fout bij het bewerken van de speler:", error);
       res

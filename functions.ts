@@ -118,48 +118,16 @@ export function sortLeagues(leagues: any[], sortBy: string, order: string) {
 }
 
 //UPDATE FUNCTIE
-
-export async function updatePlayerNameByFullName(
-  fullName: string,
-  newName: string
-) {
+export async function updatePlayerById(playerId: string, newData: any) {
   try {
     await client.connect();
 
     const database = client.db("milestone");
     const collection = database.collection("players");
 
-    await collection.updateOne(
-      { fullName: fullName },
-      { $set: { name: newName } }
-    );
+    await collection.updateOne({ id: playerId }, { $set: newData });
 
-    console.log(
-      `Naam van speler met volledige naam ${fullName} is bijgewerkt.`
-    );
-  } catch (error) {
-    console.error("Fout bij het bijwerken van de speler:", error);
-    throw new Error(
-      "Er is een fout opgetreden bij het bijwerken van de speler."
-    );
-  } finally {
-    await client.close();
-  }
-}
-
-export async function updatePlayerNameById(playerId: string, newName: string) {
-  try {
-    await client.connect();
-
-    const database = client.db("milestone");
-    const collection = database.collection("players");
-
-    await collection.updateOne(
-      { id: playerId }, // Zoek de speler op basis van de speler-id
-      { $set: { name: newName } } // Update de naam van de speler
-    );
-
-    console.log(`Naam van speler met ID ${playerId} is bijgewerkt.`);
+    console.log(`Speler met ID ${playerId} is bijgewerkt.`);
   } catch (error) {
     console.error("Fout bij het bijwerken van de speler:", error);
     throw new Error(
