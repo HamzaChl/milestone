@@ -27,7 +27,7 @@ export default function milestoneRouter() {
       });
     } catch (error) {
       console.log("Error fetching data:", error);
-      res.status(500).send("An error occurred.");
+      res.status(500).redirect("badpage");
     }
   });
 
@@ -45,9 +45,7 @@ export default function milestoneRouter() {
       });
     } catch (error) {
       console.log("Error :", error);
-      res
-        .status(500)
-        .send("Er is een fout opgetreden tijdens het laden van de spelers.");
+      res.status(500).redirect("badpage");
     }
   });
 
@@ -74,9 +72,7 @@ export default function milestoneRouter() {
       });
     } catch (error) {
       console.log("Erreur lors de la récupération des données :", error);
-      res
-        .status(500)
-        .send("Une erreur s'est produite lors du chargement des joueurs.");
+      res.status(500).redirect("badpage");
     }
   });
 
@@ -92,9 +88,7 @@ export default function milestoneRouter() {
       );
 
       if (!player) {
-        return res
-          .status(404)
-          .send("Er is een fout opgetreden tijdens het laden van de speler.");
+        return res.status(404).redirect("badpage");
       }
 
       const [firstName, lastName] = player.name.split(" ");
@@ -118,9 +112,7 @@ export default function milestoneRouter() {
       });
     } catch (error) {
       console.log("Error fetching data:", error);
-      res
-        .status(500)
-        .send("Er is een fout opgetreden tijdens het laden van de speler.");
+      res.status(500).redirect("badpage");
     }
   });
 
@@ -136,9 +128,7 @@ export default function milestoneRouter() {
       );
 
       if (!league) {
-        return res
-          .status(404)
-          .send("Er is een fout opgetreden tijdens het laden van de league.");
+        return res.status(404).redirect("badpage");
       }
 
       res.render("league", {
@@ -152,9 +142,7 @@ export default function milestoneRouter() {
       });
     } catch (error) {
       console.log("Error fetching data:", error);
-      res
-        .status(500)
-        .send("Er is een fout opgetreden tijdens het laden van de league.");
+      res.status(500).redirect("badpage");
     }
   });
 
@@ -168,7 +156,7 @@ export default function milestoneRouter() {
       );
 
       if (!player) {
-        return res.status(404).send("Speler niet gevonden.");
+        return res.status(404).redirect("badpage");
       }
 
       res.render("editPlayer", {
@@ -178,9 +166,7 @@ export default function milestoneRouter() {
       });
     } catch (error) {
       console.error("Fout bij het laden van de speler:", error);
-      res
-        .status(500)
-        .send("Er is een fout opgetreden bij het laden van de speler.");
+      res.status(500).redirect("badpage");
     }
   });
 
@@ -191,11 +177,9 @@ export default function milestoneRouter() {
         name: req.body.name,
         age: req.body.age,
         birthdate: req.body.birthdate,
-        league: req.body.league,
-        position: req.body.position,
+        "club-infos.league": req.body.league,
+        "club-infos.club": req.body.club,
       };
-
-      console.log("Nieuwe gegevens:", newData); // Controleren welke gegevens worden ontvangen
 
       const data = await fetchDataFromMongoDB();
       const player = data.players.find(
@@ -204,20 +188,16 @@ export default function milestoneRouter() {
       );
 
       if (!player) {
-        return res.status(404).send("Speler niet gevonden.");
+        return res.status(404).redirect("badpage");
       }
 
-      // Roep de update-functie aan met de speler-id
       await updatePlayerById(player.id, newData);
 
-      // Verwijder spaties uit de naam van de speler voor de redirect
       const redirectName = newData.name.replace(/\s/g, "").toLowerCase();
       res.redirect(`/milestone/players/${redirectName}`);
     } catch (error) {
       console.error("Fout bij het bewerken van de speler:", error);
-      res
-        .status(500)
-        .send("Er is een fout opgetreden bij het bewerken van de speler.");
+      res.status(500).redirect("badpage");
     }
   });
 
@@ -238,7 +218,7 @@ export default function milestoneRouter() {
       });
     } catch (error) {
       console.log(`error : ${error}`, error);
-      res.status(500).send(`error : ${error}`);
+      res.status(500).redirect("badpage");
     }
   });
 

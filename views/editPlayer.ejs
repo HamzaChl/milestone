@@ -32,19 +32,23 @@
 
     <label for="league">League:</label><br />
     <select class="edit-input" id="league" name="league">
-      <option value="premier">Premier League</option>
-      <option value="laliga">La Liga</option>
-      <option value="seriea">Serie A</option></select
+      <option value="Premier League">Premier League</option>
+      <option value="La Liga">La Liga</option>
+      <option value="Bundesliga">Bundesliga</option>
+      <option value="Serie A">Serie A</option>
+      <option value="Ligue 1">Ligue 1</option>
+      <option value="Primeira Liga">Primeira Liga</option>
+      <option value="Soviet Top League">Soviet Top League</option>
+      <option value="Eredivisie">Eredivisie</option>
+      <option value="Russian Premier League">Russian Premier League</option>
+      <option value="Super Lig">Super Lig</option>
+      <option value="Belgian Pro League">Belgian Pro League</option>
+      <option value="N/A">N/A</option></select
     ><br />
 
-    <label for="club">position:</label><br />
-    <input
-      class="edit-input"
-      type="text"
-      id="position"
-      name="position"
-      value="<%= player.position %>"
-    /><br />
+    <label for="club">Club:</label><br />
+    <input class="edit-input" type="text" id="club" name="club" value="<%=
+    player["club-infos"].club %>" /><br />
 
     <button type="submit">Save Changes</button>
   </form>
