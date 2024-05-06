@@ -16,3 +16,6 @@ Dit project is een webtoepassing gebouwd met Express.js, EJS (Embedded JavaScrip
 - **EJS**: Een templating engine voor het genereren van HTML-pagina's met JavaScript.
 - **TypeScript**: Een superset van JavaScript met optionele statische typen voor het bouwen van schaalbare webtoepassingen.
 - **MongoDB**: Een documentgeoriënteerde NoSQL-database voor het opslaan van voetbalgegevens.
+
+## Render deploy
+- **Link**: https://milestone-ezzm.onrender.com
