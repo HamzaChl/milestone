@@ -655,7 +655,7 @@ label {
   .search {
     justify-content: center;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 
@@ -692,7 +692,7 @@ label {
   .search {
     justify-content: center;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 
@@ -708,7 +708,7 @@ label {
     position: static;
     height: auto;
     border-right: none;
-    outline-right: none;
+    /* outline-right: none; */
   }
 
   aside section {
