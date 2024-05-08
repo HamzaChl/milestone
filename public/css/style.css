@@ -85,6 +85,7 @@ a {
 .active {
   background-color: var(--hover);
   box-shadow: 7px 0px 0px 0px var(--fluo);
+
 }
 
 .active,
@@ -409,6 +410,7 @@ th {
 .player-active .icon {
   background-color: rgb(69, 221, 69);
   text-align: center;
+  filter: drop-shadow(0 0 0.75rem #00f6528a);
 }
 
 .player-inactive .icon {
