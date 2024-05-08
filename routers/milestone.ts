@@ -17,9 +17,8 @@ export default function milestoneRouter() {
       const data = await fetchDataFromMongoDB();
       const numberOfPlayers = data.players.length;
       const numberOfLeagues = data.leagues.length;
-      const percentage = 75;
+      const percentage = 90;
       res.render("index", {
-        title: "Hello World",
         currentPage: "home",
         numberOfPlayers: numberOfPlayers,
         numberOfLeagues: numberOfLeagues,
@@ -38,8 +37,6 @@ export default function milestoneRouter() {
       const sortedPlayers = sortPlayers(data.players, "name", "ASC");
 
       res.render("players", {
-        title: "Hello World",
-        message: "Hello World",
         currentPage: "players",
         players: sortedPlayers,
       });
