@@ -39,8 +39,6 @@ body {
   width: 100vw;
   height: auto;
   display: flex;
-  background: rgb(37, 36, 36);
-  background: radial-gradient(circle, rgba(37, 36, 36, 1) 0%, rgba(17, 17, 17, 1) 100%);
   display: grid;
   grid-template-columns: 1fr 3fr;
   background-image: radial-gradient(#00f6525e 0.5px, transparent 0.5px), radial-gradient(#00f6525e 0.5px, #1e1e1e 0.5px);
@@ -48,6 +46,8 @@ body {
   background-position: 0 0, 10px 10px;
   margin: 0;
   padding: 0;
+  /* background: linear-gradient(to right, #000000, #434343); */
+
 }
 
 main {
