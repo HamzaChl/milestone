@@ -4,45 +4,65 @@
       <figure class="top-logo">
         <img src="/assets/images/logo-fc.webp" alt="" />
       </figure>
+      <article class="mobile-ham">
+        <i id="hamIcon" class="fa-solid fa-bars fa-2xl ham-icon"></i>
+      </article>
+      
     </article>
-    <article
-      class="item <%= currentPage === 'home' ? 'active' : '' %>"
-      id="players"
-    >
-      <a href="/milestone/home">
-        <i class="fa-solid fa-house"></i>
-        <p>home</p>
-      </a>
-    </article>
-    <article
-      class="item <%= currentPage === 'players' ? 'active' : '' %>"
-      id="players"
-    >
-      <a href="/milestone/players">
-        <i class="fa-solid fa-users"></i>
-        <p>players</p>
-      </a>
-    </article>
-    <article
-      class="item <%= currentPage === 'leagues' ? 'active' : '' %>"
-      id="leagues"
-    >
-      <a href="/milestone/leagues">
-        <i class="fa-solid fa-trophy"></i>
-        <p>leagues</p>
-      </a>
-    </article>
-    <article class="item <%= currentPage === 'settings' ? 'active' : '' %>">
-      <a href="/milestone/settings">
-        <i class="fa-solid fa-gears"></i>
-        <p>settings</p>
-      </a>
-    </article>
-    <article class="item <%= currentPage === 'logout' ? 'active' : '' %>">
-      <a href="/">
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <p>logout</p>
-      </a>
-    </article>
+    <!-- START COLLAPSE  -->
+    <nav id="aside-nav" class="aside-ham-nav">
+
+      <article
+        class="item <%= currentPage === 'home' ? 'active' : '' %>"
+        id="players"
+      >
+        <a href="/milestone/home">
+          <i class="fa-solid fa-house"></i>
+          <p>home</p>
+        </a>
+      </article>
+      <article
+        class="item <%= currentPage === 'players' ? 'active' : '' %>"
+        id="players"
+      >
+        <a href="/milestone/players">
+          <i class="fa-solid fa-users"></i>
+          <p>players</p>
+        </a>
+      </article>
+      <article
+        class="item <%= currentPage === 'leagues' ? 'active' : '' %>"
+        id="leagues"
+      >
+        <a href="/milestone/leagues">
+          <i class="fa-solid fa-trophy"></i>
+          <p>leagues</p>
+        </a>
+      </article>
+      <article class="item <%= currentPage === 'settings' ? 'active' : '' %>">
+        <a href="/milestone/settings">
+          <i class="fa-solid fa-gears"></i>
+          <p>settings</p>
+        </a>
+      </article>
+      <article class="item <%= currentPage === 'logout' ? 'active' : '' %>">
+        <a href="/">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <p>logout</p>
+        </a>
+      </article>
+    </nav>
+
+    <!-- END COLLAPSE -->
   </section>
 </aside>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamIcon = document.getElementById('hamIcon');
+    const asideNav = document.getElementById('aside-nav');
+
+    hamIcon.addEventListener('click', function () {
+      asideNav.classList.toggle('visible');
+    });
+  });
+</script>

@@ -114,6 +114,10 @@ a:hover {
   height: 100vh;
 }
 
+.mobile-ham {
+  visibility: hidden;
+}
+
 .home-item {
   background-color: var(--aside-back);
   padding: 20px;
@@ -694,7 +698,6 @@ label {
     position: static;
     height: auto;
     border-right: none;
-    /* outline-right: none; */
   }
 
   aside section {
@@ -705,16 +708,45 @@ label {
 
   aside section article {
     width: 100%;
-    /* Définissez une largeur de 100% pour occuper toute la largeur */
   }
 
   aside article:hover {
-    border-bottom: 2px solid var(--ligh-black);
+    /* border-bottom: 2px solid var(--ligh-black); */
+  }
+
+  .aside-ham-nav {
+    display: none;
+  }
+
+  .aside-ham-nav.visible {
+    display: block;
   }
 
   .logo-article {
-    display: none;
+    /* display: none; */
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
+
+  .ham-icon {
+    color: white;
+    width: 40px;
+  }
+
+  .ham-icon:hover {
+    color: var(--fluo);
+    width: 40px;
+  }
+
+  .mobile-ham {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 40px;
+  }
+
 
   .active {
     background-color: var(--hover);
