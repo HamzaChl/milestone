@@ -7,6 +7,7 @@
   --aside-back: #0f0f0f;
   --body-back: #111111;
   --ligh-black: #2b894b;
+  --hover-light: #2b894ac4;
   --hover: #1e1e1e;
   --button: #303030;
   box-sizing: border-box;
@@ -22,7 +23,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  filter: drop-shadow(0 0 0.75rem rgba(13, 255, 0, 0.277));
+  filter: drop-shadow(0 0 0.75rem var(--hover-light));
 }
 
 html {
@@ -161,32 +162,17 @@ a:hover {
   background-color: var(--hover);
 }
 
-/* .top-home {
-  height: 400px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: var(--hover);
-  box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.48);
-  border-radius: 10px;
-  grid-area: home-header;
-  background-color: #1e1e1e;
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-}
 
-.top-home h1 {
-  font-size: 40px;
-  /* text-shadow: 3px 3px 3px #00f652a7;
-}
-*/
 .stats {
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 50px;
+}
+
+.stats i {
+  margin-left: 10px;
 }
 
 .stats article {
@@ -499,7 +485,7 @@ input[type="date"] {
 }
 
 .cs-img:hover {
-  filter: drop-shadow(0 0 0.75rem rgba(13, 255, 0, 0.277));
+  filter: drop-shadow(0 0 0.75rem var(--hover-light));
   transition: all 0.3s ease-out;
 }
 
@@ -603,7 +589,7 @@ label {
 }
 
 .light-hover:hover {
-  filter: drop-shadow(0 0 0.75rem rgba(13, 255, 0, 0.277));
+  filter: drop-shadow(0 0 0.75rem var(--hover-light));
   transition: all 0.3s ease-out;
 }
 
