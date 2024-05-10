@@ -113,36 +113,6 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/leagues/:fullName", async (req, res) => {
-    try {
-      const data = await fetchDataFromMongoDB();
-      const { fullName } = req.params;
-
-      const league = data.leagues.find(
-        (league: any) =>
-          league.League.toLowerCase().replace(/\s/g, "") ===
-          fullName.toLowerCase()
-      );
-
-      if (!league) {
-        return res.status(404).redirect("badpage");
-      }
-
-      res.render("league", {
-        lname: league.League,
-        lcountry: league.Country,
-        lactive: league.Active,
-        lupdated: league["Last Updated"],
-        lvalue: league["Total Market Value"],
-        currentPage: "leagues",
-        league: league,
-      });
-    } catch (error) {
-      console.log("Error fetching data:", error);
-      res.status(500).redirect("badpage");
-    }
-  });
-
   router.get("/players/:fullName/edit", async (req, res) => {
     try {
       const fullName = req.params.fullName;
@@ -218,6 +188,57 @@ export default function milestoneRouter() {
       res.status(500).redirect("badpage");
     }
   });
+
+  router.post("/leagues", async (req, res) => {
+  try {
+    const searchTerm = req.body.searchTerm || "";
+    const data = await fetchDataFromMongoDB();
+    
+    const filteredLeagues = data.leagues.filter(league =>
+      league.League.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    res.render("leagues", {
+      title: "Search Results",
+      message: "Search Results",
+      currentPage: "leagues",
+      leagues: filteredLeagues,
+    });
+  } catch (error) {
+    console.log("Error fetching data:", error);
+    res.status(500).redirect("badpage");
+  }
+});
+
+router.get("/leagues/:fullName", async (req, res) => {
+  try {
+    const data = await fetchDataFromMongoDB();
+    const { fullName } = req.params;
+
+    const league = data.leagues.find(
+      (league: any) =>
+        league.League.toLowerCase().replace(/\s/g, "") ===
+        fullName.toLowerCase()
+    );
+
+    if (!league) {
+      return res.status(404).redirect("badpage");
+    }
+
+    res.render("league", {
+      lname: league.League,
+      lcountry: league.Country,
+      lactive: league.Active,
+      lupdated: league["Last Updated"],
+      lvalue: league["Total Market Value"],
+      currentPage: "leagues",
+      league: league,
+    });
+  } catch (error) {
+    console.log("Error fetching data:", error);
+    res.status(500).redirect("badpage");
+  }
+});
 
   router.get("/settings", (req, res) => {
     res.render("settings", {
