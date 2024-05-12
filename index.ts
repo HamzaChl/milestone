@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import path from "path";
 import { connect } from "./database";
 import milestoneRouter from "./routers/milestone";
+import session from "./middleware/session";
+
 
 dotenv.config();
 
@@ -10,6 +12,7 @@ const app: Express = express();
 const pages = ["home", "players", "leagues", "settings", "logout"];
 
 app.set("view engine", "ejs");
+app.use(session)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
