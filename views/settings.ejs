@@ -1,5 +1,14 @@
 <%- include("partials/head") %> <%- include("partials/aside") %>
 <main class="settings">
-  <section class="cs-img"></section>
+  <!-- <section class="cs-img"></section> -->
+  <article class="home-item light-hover">
+    <h1>Color Picker</h1>
+    <input type="color" id="colorPicker">
+    <button onclick="saveColor()">Save Color</button>
+    <div class="color-box" id="selectedColorBox"></div>
+    <!-- <h2>Saved Colors</h2>
+    <div class="saved-colors" id="savedColors"></div> -->
+  </article>
+  
 </main>
 <%- include("partials/footer") %>

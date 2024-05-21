@@ -1,6 +1,35 @@
-<%- include("partials/head") %> <%- include("./partials/aside") %>
+<%- include("partials/head") %>
+<%- include("./partials/aside") %>
 <main>
-  <%- include("./partials/search") %>
+  <form action="/milestone/players" method="get" id="searchForm">
+    <section class="search">
+      <div class="input-wrapper light-hover">
+        <input
+          type="text"
+          placeholder="Search by name"
+          id="searchTerm"
+          name="searchTerm"
+          value="<%= typeof searchTerm !== 'undefined' ? searchTerm : '' %>"
+        />
+      </div>
+      <div class="submit light-hover">
+        <button type="submit">SEARCH</button>
+      </div>
+      <div class="reset light-hover">
+        <button type="button" onclick="window.location.href='/milestone/players'">
+          RESET
+        </button>
+      </div>
+      <div class="sorting light-hover">
+        <button type="button" onclick="submitSortForm('ASC')">ASC</button>
+      </div>
+      <div class="sorting light-hover">
+        <button type="button" onclick="submitSortForm('DESC')">DESC</button>
+      </div>
+      <input type="hidden" name="sortOrder" id="sortOrder" value="<%= typeof sortOrder !== 'undefined' ? sortOrder : 'ASC' %>">
+    </section>
+  </form>
+
   <section class="players-container">
     <table class="players">
       <tr class="table-heading">
@@ -64,3 +93,10 @@
   <footer></footer>
 </main>
 <%- include("partials/footer") %>
+
+<script>
+  function submitSortForm(order) {
+    document.getElementById('sortOrder').value = order;
+    document.getElementById('searchForm').submit();
+  }
+</script>

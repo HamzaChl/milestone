@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response } from 'express';
 import { filterPlayers } from "../search";
 import {
   fetchDataFromMongoDB,
@@ -30,19 +30,32 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/players", async (req, res) => {
+  router.get('/players', async (req: Request, res: Response) => {
     try {
       const data = await fetchDataFromMongoDB();
 
-      const sortedPlayers = sortPlayers(data.players, "name", "ASC");
+      // Conversion des paramètres de requête en string
+      const searchTerm = (req.query.searchTerm as string) || '';
+      const sortOrder = (req.query.sortOrder as string) || 'ASC';
+      const sortField = 'name';
 
-      res.render("players", {
-        currentPage: "players",
+      let players = data.players;
+
+      if (searchTerm) {
+        players = filterPlayers(players, { name: searchTerm });
+      }
+
+      const sortedPlayers = sortPlayers(players, sortField, sortOrder);
+
+      res.render('players', {
+        currentPage: 'players',
         players: sortedPlayers,
+        searchTerm: searchTerm,
+        sortOrder: sortOrder
       });
     } catch (error) {
-      console.log("Error :", error);
-      res.status(500).redirect("badpage");
+      console.log('Error :', error);
+      res.status(500).redirect('badpage');
     }
   });
 

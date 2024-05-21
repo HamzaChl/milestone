@@ -602,6 +602,7 @@ label {
   cursor: pointer;
 }
 
+
 @media screen and (max-width: 1230px) {
   input[type="text"] {
     width: 200px;
