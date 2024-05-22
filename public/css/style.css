@@ -543,6 +543,27 @@ input[type="date"] {
   gap: 1rem;
 }
 
+.logout {
+  background-color: transparent;
+  border: transparent;
+  box-shadow: none;
+  padding-left: 0;
+  color: rgb(100, 100, 100);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+
+.logout-container {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: start;
+}
+
+
 .marketValue {
   color: var(--fluo);
   font-size: 30px;
@@ -698,7 +719,6 @@ label {
   body {
     display: flex;
     background-image: radial-gradient(#00f6525e 0.5px, transparent 0.5px), radial-gradient(#00f6525e 0.5px, #1e1e1e 0.5px);
-
   }
 
   aside {
@@ -783,6 +803,17 @@ label {
 
   .mobile-td {
     display: none;
+  }
+
+  .logout {
+    display: flex;
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .form-logout {
+    display: flex;
+    justify-content: center;
   }
 
   body {
