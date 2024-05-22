@@ -39,20 +39,23 @@
           <p>leagues</p>
         </a>
       </article>
-      <article class="item <%= currentPage === 'settings' ? 'active' : '' %>">
-        <a href="/milestone/settings">
-          <i class="fa-solid fa-gears"></i>
-          <p>settings</p>
+      <article class="item <%= currentPage === 'favorites' ? 'active' : '' %>">
+        <a href="/milestone/favorites">
+          <i class="fa-regular fa-star"></i>
+          <p>favorites</p>
         </a>
       </article>
+      <form action="/logout" method="post">
       <article class="item <%= currentPage === 'logout' ? 'active' : '' %>">
-        <a href="/">
+        <a href="/logout">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
-          <p>logout</p>
+          
+          <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i> logout</button>
         </a>
       </article>
-    </nav>
+    </form>
 
+    </nav>
     <!-- END COLLAPSE -->
   </section>
 </aside>

@@ -6,13 +6,14 @@ import {
   sortLeagues,
   updatePlayerById,
 } from "../functions";
+import { secureMiddleware } from '../middleware/secureMiddleware';
 
-const pages = ["home", "players", "leagues", "settings", "logout"];
+const pages = ["home", "players", "leagues", "favorites", "logout"];
 
 export default function milestoneRouter() {
   const router = express.Router();
 
-  router.get("/home", async (req, res) => {
+  router.get("/home",secureMiddleware, async (req, res) => {
     try {
       const data = await fetchDataFromMongoDB();
       const numberOfPlayers = data.players.length;
@@ -30,7 +31,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get('/players', async (req: Request, res: Response) => {
+  router.get('/players',secureMiddleware, async (req: Request, res: Response) => {
     try {
       const data = await fetchDataFromMongoDB();
 
@@ -59,7 +60,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.post("/players", async (req, res) => {
+  router.post("/players",secureMiddleware, async (req, res) => {
     try {
       const searchTerm: string = req.body.searchTerm || "";
       const filters = {
@@ -86,7 +87,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/players/:fullName", async (req, res) => {
+  router.get("/players/:fullName",secureMiddleware, async (req, res) => {
     try {
       const data = await fetchDataFromMongoDB();
       const { fullName } = req.params;
@@ -126,7 +127,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/leagues/:fullName", async (req, res) => {
+  router.get("/leagues/:fullName",secureMiddleware, async (req, res) => {
     try {
       const data = await fetchDataFromMongoDB();
       const { fullName } = req.params;
@@ -156,7 +157,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/players/:fullName/edit", async (req, res) => {
+  router.get("/players/:fullName/edit",secureMiddleware, async (req, res) => {
     try {
       const fullName = req.params.fullName;
       const data = await fetchDataFromMongoDB();
@@ -180,7 +181,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.post("/players/:fullName/edit", async (req, res) => {
+  router.post("/players/:fullName/edit",secureMiddleware, async (req, res) => {
     try {
       const fullName = req.params.fullName;
       const newData = {
@@ -211,7 +212,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/leagues", async (req, res) => {
+  router.get("/leagues",secureMiddleware, async (req, res) => {
     try {
       const data = await fetchDataFromMongoDB();
 
@@ -232,17 +233,79 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/settings", (req, res) => {
-    res.render("settings", {
+  router.post("/leagues",secureMiddleware, async (req, res) => {
+    try {
+      const searchTerm = req.body.searchTerm || "";
+      console.log("Search term for leagues:", searchTerm);
+  
+      const data = await fetchDataFromMongoDB();
+      console.log("Data fetched from MongoDB for leagues:", data);
+  
+      const filteredLeagues = data.leagues.filter(league =>
+        league.League.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      console.log("Filtered leagues:", filteredLeagues);
+  
+      res.render("leagues", {
+        title: "Search Results",
+        message: "Search Results",
+        currentPage: "leagues",
+        leagues: filteredLeagues,
+        searchTerm,  // Ajoutez le terme de recherche pour le garder dans le champ
+      });
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      res.status(500).redirect("badpage");
+    }
+  });
+  
+  
+  router.get("/leagues/:fullName",secureMiddleware, async (req, res) => {
+    try {
+      const data = await fetchDataFromMongoDB();
+      const { fullName } = req.params;
+  
+      const league = data.leagues.find(
+        (league: any) =>
+          league.League.toLowerCase().replace(/\s/g, "") ===
+          fullName.toLowerCase()
+      );
+  
+      if (!league) {
+        return res.status(404).redirect("badpage");
+      }
+  
+      res.render("league", {
+        lname: league.League,
+        lcountry: league.Country,
+        lactive: league.Active,
+        lupdated: league["Last Updated"],
+        lvalue: league["Total Market Value"],
+        currentPage: "leagues",
+        league: league,
+      });
+    } catch (error) {
+      console.log("Error fetching data:", error);
+      res.status(500).redirect("badpage");
+    }
+  });
+  
+
+  router.get("/favorites",secureMiddleware, (req, res) => {
+    res.render("favorites", {
       title: "Hello World",
       message: "Hello World",
-      currentPage: "settings",
+      currentPage: "favorites",
     });
   });
 
-  router.get("/logout", (req, res) => {
-    res.redirect("/");
-  });
+  router.post("/logout", secureMiddleware, async (req, res) => {
+    req.session.destroy((err) => {
+        res.redirect("/login");
+    });
+});
+  
+  
 
   return router;
 }

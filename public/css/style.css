@@ -453,6 +453,10 @@ button:hover {
   box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.48);
 }
 
+input[type="email"] {
+  background-color: red;
+}
+
 input[type="text"],
 input[type="number"],
 input[type="date"] {
@@ -604,7 +608,9 @@ label {
 
 
 @media screen and (max-width: 1230px) {
-  input[type="text"] {
+
+  input[type="text"],
+  input[type="email"] {
     width: 200px;
   }
 }
@@ -622,7 +628,8 @@ label {
     height: 5rem;
   }
 
-  input[type="text"] {
+  input[type="text"],
+  input[type="email"] {
     width: 544.7px;
   }
 
@@ -801,7 +808,9 @@ label {
 }
 
 @media screen and (max-width: 580px) {
-  input[type="text"] {
+
+  input[type="text"],
+  input[type="email"] {
     width: 400px;
   }
 

@@ -1,4 +1,4 @@
-<form action="/milestone/players" method="post" id="searchForm">
+<form action="<%= currentPage === 'players' ? '/milestone/players' : '/milestone/leagues' %>" method="post" id="searchForm">
   <section class="search">
     <div class="input-wrapper light-hover">
       <input
@@ -12,11 +12,11 @@
       <button type="submit">SEARCH</button>
     </div>
     <div class="reset light-hover">
-      <button type="button" onclick="window.location.href='/milestone/players'">
+      <button type="button" onclick="window.location.href='/milestone/<%= currentPage %>'">
         RESET
       </button>
     </div>
-      <div class="sorting light-hover">
+    <div class="sorting light-hover">
       <button type="submit" name="sortOrder" value="ASC">ASC</button>
     </div>
     <div class="sorting light-hover">

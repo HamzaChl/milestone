@@ -31,10 +31,6 @@ body {
 
 }
 
-
-
-form {}
-
 .right {
     width: 100%;
     height: 100%;
@@ -42,7 +38,8 @@ form {}
 
 
 input[type=text],
-input[type=password] {
+input[type=password],
+input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 20px 0;
@@ -76,6 +73,14 @@ button {
     width: 100%;
 }
 
+.error-msg {
+    background-color: #303030;
+    color: rgb(211, 66, 66);
+    width: auto;
+    padding: 12px 20px;
+    margin: 20px 0;
+}
+
 /* Add a hover effect for buttons */
 button:hover {
     opacity: 0.8;
@@ -92,21 +97,17 @@ h1 {
 }
 
 
-
-/* Extra style for the cancel button (red) */
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
     background-color: var(--fluo);
 }
 
-/* Center the avatar image inside this container */
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
 }
 
-/* Avatar image */
 img.avatar {
     width: 10%;
     border-radius: 50%;
