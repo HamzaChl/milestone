@@ -19,3 +19,14 @@ Dit project is een webtoepassing gebouwd met Express.js, EJS (Embedded JavaScrip
 
 ## Render deploy
 - **Link**: https://milestone-ezzm.onrender.com
+
+## Test Accounts
+* Admin User
+  ```sh
+  mail: 		admin@ap.be  |  password: 	admin@1234
+  ```
+
+* Regular User
+  ```sh
+  mail: 		user@ap.be  |  password: 	user@1234
+  ```
