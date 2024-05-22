@@ -20,11 +20,13 @@
             class="icon <%= player.status === 'active' ? 'player-active' : 'player-inactive' %>"
           ></div>
         </div>
+        <% if(userRole.role === "ADMIN"){%>
         <span class="edit">
           <a href="/milestone/players/<%=   fullName %>/edit">
             <i class="fa-solid fa-highlighter fa-2xs light-hover edit-icon"></i>
           </a>
         </span>
+        <% }%>
       </h1>
 
       <p class="details-player">

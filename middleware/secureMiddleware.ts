@@ -10,3 +10,11 @@ export function secureMiddleware(req: Request, res: Response, next: NextFunction
     }
 };
 
+export async function requireAdmin(request: Request, response: Response, next: NextFunction) {
+    if (response.locals.user.role === "ADMIN") {
+        next();
+    } else {
+        response.redirect("/milestone/players");
+    };
+};
+

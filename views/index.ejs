@@ -1,6 +1,6 @@
 <%- include("partials/head") %> <%- include("partials/aside") %>
 <main class="home">
-  <h5>Hello User,</h5>
+  <h5>Hello <%= userRole.role%>,</h5>
   <!-- <br /> -->
   <h5 class="sub-welcome">
     Welcome to <strong class="light-hover">MileStone4 !</strong>
@@ -20,6 +20,8 @@
         <h4><i class="fa-solid fa-trophy"></i><%= numberOfLeagues %></h4>
       </article>
     </a>
+    <% if(userRole.role === "ADMIN"){%>
+
     <article class="home-item home-item2 light-hover">
       <h1>Final Date:</h1>
 
@@ -33,5 +35,7 @@
       <div class="progress" style="width: <%= percentage %>%"></div>
     </div>
   </article>
+  <% }%>
+
 </main>
 <%- include("partials/footer") %>

@@ -6,7 +6,8 @@ import {
   sortLeagues,
   updatePlayerById,
 } from "../functions";
-import { secureMiddleware } from '../middleware/secureMiddleware';
+import { requireAdmin, secureMiddleware } from '../middleware/secureMiddleware';
+import session from "../middleware/session";
 
 const pages = ["home", "players", "leagues", "favorites", "logout"];
 
@@ -19,11 +20,14 @@ export default function milestoneRouter() {
       const numberOfPlayers = data.players.length;
       const numberOfLeagues = data.leagues.length;
       const percentage = 90;
+
       res.render("index", {
         currentPage: "home",
         numberOfPlayers: numberOfPlayers,
         numberOfLeagues: numberOfLeagues,
         percentage: percentage,
+        userRole:req.session.user,
+
       });
     } catch (error) {
       console.log("Error fetching data:", error);
@@ -120,6 +124,7 @@ export default function milestoneRouter() {
         player: player,
         league: league,
         fullName: fullName,
+        userRole:req.session.user,
       });
     } catch (error) {
       console.log("Error fetching data:", error);
@@ -157,7 +162,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/players/:fullName/edit",secureMiddleware, async (req, res) => {
+  router.get("/players/:fullName/edit", secureMiddleware, async (req, res) => {
     try {
       const fullName = req.params.fullName;
       const data = await fetchDataFromMongoDB();

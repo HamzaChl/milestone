@@ -552,6 +552,8 @@ input[type="date"] {
   font-size: 16px;
   display: flex;
   align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 
@@ -681,6 +683,15 @@ label {
 @media screen and (max-width: 890px) {
   .item p {
     display: none;
+  }
+
+  .details-container {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .main-player {
+    height: auto;
   }
 
   .search {
