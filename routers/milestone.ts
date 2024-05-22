@@ -217,26 +217,38 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/leagues",secureMiddleware, async (req, res) => {
+  router.get("/leagues", secureMiddleware, async (req, res) => {
     try {
       const data = await fetchDataFromMongoDB();
-
-      let sortedLeagues = data.leagues;
-      const sortOrder = req.query.sortOrder as string;
-      if (sortOrder) {
-        sortedLeagues = sortLeagues(data.leagues, "League", sortOrder);
+      const searchTerm = (req.query.searchTerm as string) || '';
+      const sortOrder = (req.query.sortOrder as string) || 'ASC';
+      const sortField = 'League'; // Assuming we are sorting by league name
+  
+      let leagues = data.leagues;
+  
+      // Filter leagues by search term
+      if (searchTerm) {
+        leagues = leagues.filter(league =>
+          league.League.toLowerCase().includes(searchTerm.toLowerCase())
+        );
       }
-
+  
+      // Sort leagues
+      const sortedLeagues = sortLeagues(leagues, sortField, sortOrder);
+  
       res.render("leagues", {
         title: "Leagues",
         currentPage: "leagues",
         leagues: sortedLeagues,
+        searchTerm: searchTerm,
+        sortOrder: sortOrder
       });
     } catch (error) {
-      console.log(`error : ${error}`, error);
+      console.log(`Error: ${error}`, error);
       res.status(500).redirect("badpage");
     }
   });
+  
 
   router.post("/leagues",secureMiddleware, async (req, res) => {
     try {

@@ -53,7 +53,6 @@ export async function fetchDataFromMongoDB() {
     throw new Error("Error fetching data from MongoDB: " + error);
   } finally {
     await client.close();
-    // console.log("Disconnected from MongoDB");
   }
 }
 
@@ -116,6 +115,7 @@ export function sortLeagues(leagues: any[], sortBy: string, order: string) {
     return leagues.sort((a, b) => (a[sortBy] < b[sortBy] ? 1 : -1));
   }
 }
+
 
 //UPDATE FUNCTIE
 export async function updatePlayerById(playerId: string, newData: any) {
