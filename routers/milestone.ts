@@ -19,7 +19,7 @@ export default function milestoneRouter() {
       const data = await fetchDataFromMongoDB();
       const numberOfPlayers = data.players.length;
       const numberOfLeagues = data.leagues.length;
-      const percentage = 90;
+      const percentage = 96;
 
       res.render("index", {
         currentPage: "home",
