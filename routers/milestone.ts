@@ -162,7 +162,7 @@ export default function milestoneRouter() {
     }
   });
 
-  router.get("/players/:fullName/edit", secureMiddleware, async (req, res) => {
+  router.get("/players/:fullName/edit", secureMiddleware,requireAdmin, async (req, res) => {
     try {
       const fullName = req.params.fullName;
       const data = await fetchDataFromMongoDB();
