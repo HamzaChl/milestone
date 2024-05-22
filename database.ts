@@ -49,7 +49,7 @@ async function createInitialUser() {
       password: await bcrypt.hash(passwordUser, saltRounds),
       role: "USER"
     });
-    console.log("Regular user created.");
+    console.log("User created.");
 
   }
 }
@@ -67,11 +67,11 @@ export async function login(email: string, password: string) {
       return user;
     } else {
       console.log("Password incorrect");
-      throw new Error("Password incorrect");
+      throw new Error("User/Password incorrect");
     }
   } else {
     console.log("User not found");
-    throw new Error("User not found");
+    throw new Error("User/Password incorrect");
   }
 }
 
