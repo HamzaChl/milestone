@@ -10,7 +10,6 @@ const client = new MongoClient(uri);
 
 export async function fetchDataAndWriteToMongoDB() {
   try {
-    await client.connect();
 
     const responsePlayers = await fetch(
       "https://hamzachl.github.io/milestone1-json/soccerplayers.json"
@@ -53,6 +52,7 @@ export async function fetchDataFromMongoDB() {
     throw new Error("Error fetching data from MongoDB: " + error);
   } finally {
     await client.close();
+    // console.log("Disconnected from MongoDB");
   }
 }
 

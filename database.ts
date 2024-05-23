@@ -10,6 +10,7 @@ dotenv.config();
 export const uri: string = process.env.MONGO_URI ?? "mongodb://localhost:27017";
 const client = new MongoClient(uri);
 export const userCollection = client.db("milestone").collection<User>("users");
+export const collection = client.db("milestone").collection("players");
 const saltRounds : number = 10;
 
 
@@ -82,8 +83,6 @@ export async function connect() {
     await createInitialUser();
     await client.connect();
     console.log("Connected to database");
-
-    const collection = client.db("milestone").collection("players");
     const count = await collection.countDocuments();
 
     if (count === 0) {
