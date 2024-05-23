@@ -253,15 +253,15 @@ export default function milestoneRouter() {
   router.post("/leagues",secureMiddleware, async (req, res) => {
     try {
       const searchTerm = req.body.searchTerm || "";
-      console.log("Search term for leagues:", searchTerm);
+      // console.log("Search term for leagues:", searchTerm);
   
       const data = await fetchDataFromMongoDB();
-      console.log("Data fetched from MongoDB for leagues:", data);
+      // console.log("Data fetched from MongoDB for leagues:", data);
   
       const filteredLeagues = data.leagues.filter(league =>
         league.League.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      console.log("Filtered leagues:", filteredLeagues);
+      // console.log("Filtered leagues:", filteredLeagues);
   
       res.render("leagues", {
         title: "Search Results",

@@ -17,11 +17,13 @@
         RESET
       </button>
     </div>
+    <% if(currentPage === 'players'){%>
     <div class="sorting light-hover">
       <button type="submit" name="sortOrder" value="ASC">ASC</button>
     </div>
     <div class="sorting light-hover">
       <button type="submit" name="sortOrder" value="DESC">DESC</button>
     </div>
+    <%}%>
   </section>
 </form>
