@@ -9,6 +9,8 @@ Dit project is een webtoepassing gebouwd met Express.js, EJS (Embedded JavaScrip
 - **Bekijk details**: Bekijk gedetailleerde informatie over een specifieke speler.
 - **Bewerk gegevens**: Bewerk de gegevens van een bestaande speler.
 - **Verwijder speler**: Verwijder een voetbalspeler uit de database.
+- **Registreren**: Een account kunnen aanmaken.
+- **Roles**: Admin en User roles, een account registreren krijgt default een user role.
 
 ## Technologieën
 
@@ -18,7 +20,7 @@ Dit project is een webtoepassing gebouwd met Express.js, EJS (Embedded JavaScrip
 - **MongoDB**: Een documentgeoriënteerde NoSQL-database voor het opslaan van voetbalgegevens.
 
 ## Render deploy
-- **Link**: https://milestone-ezzm.onrender.com
+- **Link**: https://milestone-u8tp.onrender.com/
 
 ## Test Accounts
 * Admin User
