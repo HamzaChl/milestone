@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo-fc.webp" />
+    <link rel="stylesheet" href="/css/login.css" />
+</head>
+<body>
+    <section class="left">
+        <div>
+            <h1>Register</h1>
+            <form action="/register" method="post">
+                <div class="container">
+                    <% if (message) { %>
+                        <div class="error-msg">
+                            <p class="<%= message.type %>"><%= message.message %></p>
+                        </div>
+                    <% } %>
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Enter Email" name="email" required id="email">
+                    <br>
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+                    <br>
+                    <label for="passwordConfirm"><b>Confirm Password</b></label>
+                    <input type="password" placeholder="Confirm Password" name="passwordConfirm" id="passwordConfirm" required>
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="right">
+        <div class="img-holder"></div>
+      </section>
+</body>
+</html>

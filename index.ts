@@ -30,6 +30,7 @@ app.set("port", process.env.PORT || 3000);
 app.get("/",(req,res)=>{
   res.redirect("/login")
 })
+
 app.use(loginRouter());
 app.use("/milestone", milestoneRouter());
 

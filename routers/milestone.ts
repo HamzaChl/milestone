@@ -268,7 +268,7 @@ export default function milestoneRouter() {
         message: "Search Results",
         currentPage: "leagues",
         leagues: filteredLeagues,
-        searchTerm,  // Ajoutez le terme de recherche pour le garder dans le champ
+        searchTerm, 
       });
     } catch (error) {
       console.log("Error fetching data:", error);
