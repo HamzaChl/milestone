@@ -56,6 +56,14 @@ input[type=email] {
     width: 100%;
 }
 
+.img-holder2 {
+    background-image: url(../assets/images/register.jpg);
+    background-position: left;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
 label {
     color: white;
     font-family: "stevie-sans", sans-serif;
