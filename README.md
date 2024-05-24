@@ -32,3 +32,23 @@ Dit project is een webtoepassing gebouwd met Express.js, EJS (Embedded JavaScrip
   ```sh
   mail: 		user@ap.be  |  password: 	user@1234
   ```
+  
+## Screenshots van app
+
+<img width="1512" alt="Capture d’écran 2024-05-24 à 22 42 56" src="https://github.com/HamzaChl/milestone/assets/91462821/fbc678d9-d395-4501-adc9-b659c35d2e52">
+
+**<p>Login pagina</p>**\
+<br />
+
+<img width="1512" alt="Capture d’écran 2024-05-24 à 22 43 13" src="https://github.com/HamzaChl/milestone/assets/91462821/1cfd6536-86ee-4851-a807-40413968f739">
+<img width="1512" alt="Capture d’écran 2024-05-24 à 22 46 45" src="https://github.com/HamzaChl/milestone/assets/91462821/d9684cab-21cf-41e6-8434-47ba1b257a18">
+
+**<p>Lijst van spelers met details</p>**\
+<br />
+
+<img width="1512" alt="Capture d’écran 2024-05-24 à 22 43 23" src="https://github.com/HamzaChl/milestone/assets/91462821/b25ed514-4b51-42e2-aa1d-836a719345b4">
+
+**<p>Lijst van leagues</p>**\
+</br>
+
+
