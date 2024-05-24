@@ -38,8 +38,6 @@ export default function milestoneRouter() {
   router.get('/players',secureMiddleware, async (req: Request, res: Response) => {
     try {
       const data = await fetchDataFromMongoDB();
-
-      // Conversion des paramètres de requête en string
       const searchTerm = (req.query.searchTerm as string) || '';
       const sortOrder = (req.query.sortOrder as string) || 'ASC';
       const sortField = 'name';

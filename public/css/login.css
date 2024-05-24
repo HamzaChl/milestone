@@ -83,10 +83,17 @@ button {
 
 .error-msg {
     background-color: #303030;
-    color: rgb(211, 66, 66);
     width: auto;
     padding: 12px 20px;
     margin: 20px 0;
+}
+
+.error {
+    color: rgb(211, 66, 66);
+}
+
+.success {
+    color: green;
 }
 
 /* Add a hover effect for buttons */

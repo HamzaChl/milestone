@@ -1,62 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login screen</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/logo-fc.webp" />
     <link rel="stylesheet" href="/css/login.css" />
-  </head>
-  <body>
+</head>
+<body>
     <section class="left">
-      <div>
-        <h1>Sign in</h1>
-        <form action="/login" method="post">
-          <div class="container">
-            <% if (message) { %>
-              <div class="error-msg">
-    
-                <p class="<%= message.type %>"><%= message.message %></p>
-              </div>
-          <% } %>
-            <label for="email"><b>E-mail</b></label>
-            <input
-              type="email"
-              placeholder="Enter Username"
-              name="email"
-              required
-              id="email"
-            />
+        <div>
+            <h1>Sign in</h1>
+            <form action="/login" method="post">
+                <div class="container">
+                    <% if (message) { %>
+                        <div class="<%= message.type %> error-msg">
+                            <p><%= message.message %></p>
+                        </div>
+                    <% } %>
+                    <label for="email"><b>E-mail</b></label>
+                    <input
+                        type="email"
+                        placeholder="Enter Username"
+                        name="email"
+                        required
+                        id="email"
+                    />
+                    <br>
+
+                    <label for="password"><b>Password</b></label>
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        name="password"
+                        id="password"
+                        required
+                    />
+
+                    <button type="submit">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember" />
+                        Remember me
+                    </label>
+                </div>
+            </form>
             <br>
-
-
-            <label for="password"><b>Password</b></label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              name="password"
-              id="password"
-              required
-            />
-
-            <button type="submit">Login</button>
-            <label>
-              <input type="checkbox" checked="checked" name="remember" />
-              Remember me
-            </label>
-          </div>
-        </form>
-        <br>
-        <br>
-        <br>
-        <div class="register">
-          
-          <button class="register" onclick="location.href='/register'">Register</button>
+            <br>
+            <br>
+            <div class="register">
+                <button class="register" onclick="location.href='/register'">Register</button>
+            </div>
         </div>
-      </div>
     </section>
     <section class="right">
-      <div class="img-holder"></div>
+        <div class="img-holder"></div>
     </section>
-  </body>
+</body>
 </html>
