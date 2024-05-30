@@ -1,3 +1,6 @@
+<img width="1512" alt="Capture d’écran 2024-05-24 à 22 43 13" src="https://github.com/HamzaChl/milestone/assets/91462821/1cfd6536-86ee-4851-a807-40413968f739">
+
+
 # ⚽️ Voetbal Web App
 
 Dit project is een webtoepassing gebouwd met Express.js, EJS (Embedded JavaScript), TypeScript en MongoDB. Het stelt gebruikers in staat om voetbalgerelateerde gegevens te bekijken en te beheren.
